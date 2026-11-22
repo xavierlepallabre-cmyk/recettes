@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Nos recettes</title>
+  <meta name="theme-color" content="#C4572B">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icone-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Recettes">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="entete no-print">
+    <a href="#/recettes" class="logo">🍲 <span>Nos recettes</span></a>
+    <nav class="nav-haut" aria-label="Menu principal">
+      <a href="#/recettes" data-onglet="recettes">📖 Recettes</a>
+      <a href="#/semaine" data-onglet="semaine">📅 Menu de la semaine</a>
+      <a href="#/courses" data-onglet="courses">🛒 Liste de courses</a>
+    </nav>
+  </header>
+
+  <main id="app" tabindex="-1"><p class="chargement">Chargement des recettes…</p></main>
+
+  <footer class="pied no-print">
+    <a href="#/reglages" class="lien-discret">⚙ Réglages</a>
+  </footer>
+
+  <nav class="nav-bas no-print" aria-label="Menu principal">
+    <a href="#/recettes" data-onglet="recettes"><span class="ico">📖</span>Recettes</a>
+    <a href="#/semaine" data-onglet="semaine"><span class="ico">📅</span>Semaine</a>
+    <a href="#/courses" data-onglet="courses"><span class="ico">🛒</span>Courses</a>
+  </nav>
+
+  <div id="modale" class="modale" hidden>
+    <div class="modale-fond" data-action="fermer-modale"></div>
+    <div class="modale-boite" role="dialog" aria-modal="true"></div>
+  </div>
+  <div id="attente" class="attente" hidden><div class="attente-boite"><div class="roue"></div><p id="attente-texte">Enregistrement…</p></div></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

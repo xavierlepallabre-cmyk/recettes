@@ -1,0 +1,76 @@
+[
+  {
+    "id": "quiche-lorraine-ex01",
+    "titre": "Quiche lorraine",
+    "categorie": "Plat",
+    "portions": 6,
+    "tempsPrep": 15,
+    "tempsCuisson": 35,
+    "photo": "",
+    "ingredients": [
+      { "q": 1, "u": "", "nom": "pâte brisée", "rayon": "Crèmerie – Œufs" },
+      { "q": 200, "u": "g", "nom": "lardons", "rayon": "Boucherie – Poissonnerie" },
+      { "q": 3, "u": "", "nom": "œufs", "rayon": "Crèmerie – Œufs" },
+      { "q": 20, "u": "cl", "nom": "crème fraîche", "rayon": "Crèmerie – Œufs" },
+      { "q": 20, "u": "cl", "nom": "lait", "rayon": "Crèmerie – Œufs" },
+      { "q": 1, "u": "pincée", "nom": "muscade", "rayon": "Épicerie" },
+      { "q": null, "u": "", "nom": "sel, poivre", "rayon": "Épicerie" }
+    ],
+    "etapes": [
+      "Préchauffer le four à 180 °C.",
+      "Étaler la pâte dans un moule et la piquer avec une fourchette.",
+      "Faire revenir les lardons à la poêle sans matière grasse, puis les répartir sur la pâte.",
+      "Battre les œufs avec la crème, le lait, la muscade, du sel et du poivre.",
+      "Verser sur les lardons et enfourner 35 minutes, jusqu'à ce que la quiche soit dorée."
+    ],
+    "notes": "Exemple fourni avec l'application : vous pouvez le supprimer."
+  },
+  {
+    "id": "soupe-potiron-ex02",
+    "titre": "Soupe de potiron",
+    "categorie": "Soupe",
+    "portions": 4,
+    "tempsPrep": 15,
+    "tempsCuisson": 25,
+    "photo": "",
+    "ingredients": [
+      { "q": 1, "u": "kg", "nom": "potiron", "rayon": "Fruits et légumes" },
+      { "q": 2, "u": "", "nom": "pommes de terre", "rayon": "Fruits et légumes" },
+      { "q": 1, "u": "", "nom": "oignon", "rayon": "Fruits et légumes" },
+      { "q": 1, "u": "", "nom": "cube de bouillon de volaille", "rayon": "Épicerie" },
+      { "q": 10, "u": "cl", "nom": "crème fraîche", "rayon": "Crèmerie – Œufs" },
+      { "q": null, "u": "", "nom": "sel, poivre", "rayon": "Épicerie" }
+    ],
+    "etapes": [
+      "Éplucher et couper en morceaux le potiron, les pommes de terre et l'oignon.",
+      "Les mettre dans une grande casserole, couvrir d'eau et ajouter le cube de bouillon.",
+      "Laisser cuire 25 minutes à feu moyen.",
+      "Mixer, ajouter la crème, saler et poivrer."
+    ],
+    "notes": "Exemple fourni avec l'application : vous pouvez le supprimer."
+  },
+  {
+    "id": "gateau-yaourt-ex03",
+    "titre": "Gâteau au yaourt",
+    "categorie": "Dessert",
+    "portions": 8,
+    "tempsPrep": 10,
+    "tempsCuisson": 35,
+    "photo": "",
+    "ingredients": [
+      { "q": 1, "u": "pot", "nom": "yaourt nature", "rayon": "Crèmerie – Œufs" },
+      { "q": 3, "u": "", "nom": "œufs", "rayon": "Crèmerie – Œufs" },
+      { "q": 2, "u": "pot", "nom": "sucre", "rayon": "Épicerie" },
+      { "q": 3, "u": "pot", "nom": "farine", "rayon": "Épicerie" },
+      { "q": 0.5, "u": "pot", "nom": "huile", "rayon": "Épicerie" },
+      { "q": 1, "u": "sachet", "nom": "levure chimique", "rayon": "Épicerie" }
+    ],
+    "etapes": [
+      "Préchauffer le four à 180 °C et beurrer un moule.",
+      "Verser le yaourt dans un saladier ; garder le pot pour mesurer les autres ingrédients.",
+      "Ajouter les œufs, le sucre, la farine, la levure puis l'huile, en mélangeant entre chaque.",
+      "Verser dans le moule et cuire 35 minutes."
+    ],
+    "notes": "Exemple fourni avec l'application : vous pouvez le supprimer."
+  }
+]
