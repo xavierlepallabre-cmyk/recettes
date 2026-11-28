@@ -164,6 +164,13 @@ input.recherche:focus { border-color: var(--accent); outline: none; }
 .article .art-src { display: block; color: var(--doux); font-size: .8rem; }
 .article.coche .art-texte { text-decoration: line-through; color: var(--doux); }
 .article .suppr { margin-left: auto; border: none; background: none; color: var(--doux); font-size: 1.3rem; cursor: pointer; padding: 0 .4rem; }
+.panneau { background: var(--carte); border-radius: var(--rayon); padding: 1.2rem 1.4rem; box-shadow: var(--ombre); margin-top: 1.5rem; }
+.panneau h2 { margin-bottom: .3rem; }
+.panneau h3 { font-size: 1rem; color: var(--doux); margin: .9rem 0 .4rem; }
+.puces-hab { display: flex; flex-wrap: wrap; gap: .5rem; }
+.puce-hab { border: 2px solid var(--ligne); background: var(--fond); border-radius: 999px; padding: .5rem 1rem; min-height: 46px; font-weight: 600; cursor: pointer; }
+.puce-hab:hover { border-color: var(--accent); }
+.puce-hab.choisi { background: var(--vert); border-color: var(--vert); color: #fff; }
 .ajout-article { display: flex; gap: .6rem; margin: 1rem 0; }
 .ajout-article input { flex: 1; }
 

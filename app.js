@@ -8,6 +8,20 @@
 // La semaine commence le samedi midi (jour des courses) et finit le vendredi soir
 const JOURS = ['Samedi', 'Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'];
 const DEBUT_SEMAINE = 'samedi';
+
+/* Produits qu'on rachète sans recette : on les touche pour les mettre sur la liste */
+const HABITUELS_DEFAUT = [
+  { id: 'quotidien', titre: 'Produits du quotidien', icone: '🧴', groupes: [
+    { titre: 'Maison', items: ['Papier toilette', 'Sopalin', 'Produit lave-vaisselle', 'Produit de rinçage', 'Sel régénérant', 'Lessive', 'Adoucissant', 'Produit vaisselle', 'Papier aluminium', 'Papier cuisson', 'Sacs poubelle', 'Produit sol', 'Produit vitres', 'Antikal'] },
+    { titre: 'Salle de bain', items: ['Gel douche papa', 'Gel douche maman', 'Gel douche Naël', 'Dentifrice papa', 'Dentifrice maman', 'Dentifrice Naël', 'Shampoing maman'] }
+  ] },
+  { id: 'habituels', titre: 'Courses habituelles', icone: '🥛', groupes: [
+    { titre: '', items: ['Café', 'Gâteaux goûter Naël (Savane, BN…)', 'Kinder Joy', 'Kinder Chocobon', 'Glace Naël', 'Yaourts papa', 'Yaourts maman', 'Yaourts Naël', 'Beurre', 'Sel', 'Poivre'] }
+  ] }
+];
+const catalogue = () => etat.planning.habituels || HABITUELS_DEFAUT;
+const achats = () => etat.planning.achats || (etat.planning.achats = []);
+const ajoutsListe = () => etat.planning.ajouts || (etat.planning.ajouts = []);
 const REPAS = ['Midi', 'Soir'];
 const CATEGORIES = ['Entrée', 'Plat', 'Dessert', 'Soupe', 'Apéritif', 'Accompagnement', 'Petit-déjeuner', 'Boisson', 'Autre'];
 const EMOJI = { 'Entrée': '🥗', 'Plat': '🍲', 'Dessert': '🍰', 'Soupe': '🥣', 'Apéritif': '🧀', 'Accompagnement': '🥔', 'Petit-déjeuner': '🥐', 'Boisson': '🍹', 'Autre': '🍽️' };
@@ -37,7 +51,6 @@ const etat = {
   recettes: [],
   planning: { majLe: 0, repas: {} },   // repas["0-Midi"] = [{ id, portions }, …] (plusieurs plats par repas)
   coches: {},                           // liste de courses : articles cochés (par appareil)
-  ajouts: [],                           // articles ajoutés à la main (par appareil)
   filtre: { texte: '', categorie: '' },
   photosTemp: {},                       // photos fraîchement envoyées (avant mise en ligne)
   brouillon: null                       // recette en cours d'édition
@@ -233,7 +246,9 @@ async function charger() {
   const distant = planning && planning.repas ? planning : { majLe: 0, repas: {} };
   etat.planning = migrerPlanning(local && local.majLe > (distant.majLe || 0) ? local : distant);
   etat.coches = lireLocal('recettes-coches', {});
-  etat.ajouts = lireLocal('recettes-ajouts', []);
+  // anciens articles ajoutés à la main (gardés sur l'appareil) → liste partagée
+  const anciens = lireLocal('recettes-ajouts', []);
+  if (anciens.length) { etat.planning.ajouts = [...ajoutsListe(), ...anciens]; ecrireLocal('recettes-ajouts', []); }
 }
 
 /* Mise à jour des anciens menus :
@@ -456,6 +471,13 @@ function calculerCourses() {
       a.details.push(i.detail || '');
     }
   }
+  // produits habituels choisis : rejoignent la ligne de la recette s'il y en a une (ex. beurre)
+  for (const nom of achats()) {
+    const cle = cleIngredient(nom);
+    if (articles[cle]) { articles[cle].habituel = true; continue; }
+    const panneau = catalogue().find(c => c.groupes.some(g => g.items.includes(nom)));
+    articles['hab|' + cle] = { cle: 'hab|' + cle, nom, rayon: panneau ? panneau.titre : 'Courses habituelles', parts: {}, sansQte: true, sources: new Set(), details: [] };
+  }
   const ordreU = u => ['g', 'ml', ''].indexOf(u) >= 0 ? ['g', 'ml', ''].indexOf(u) : 3;
   return Object.values(articles).map(a => {
     const morceaux = Object.entries(a.parts).sort((x, y) => ordreU(x[0]) - ordreU(y[0])).map(([u, q]) => {
@@ -481,6 +503,17 @@ function calculerCourses() {
   });
 }
 
+const RAYONS_LISTE = () => [...RAYONS.filter(r => r !== 'Autre'), ...catalogue().map(c => c.titre), 'Autre'];
+function vuePanneaux() {
+  const choisis = new Set(achats());
+  return catalogue().map(c => `
+    <section class="panneau no-print">
+      <h2>${c.icone || ''} ${echap(c.titre)}</h2>
+      ${c.groupes.map(g => `${g.titre ? `<h3>${echap(g.titre)}</h3>` : ''}
+        <div class="puces-hab">${g.items.map(nom => `<button class="puce-hab ${choisis.has(nom) ? 'choisi' : ''}" data-action="hab" data-nom="${echap(nom)}" aria-pressed="${choisis.has(nom)}">${choisis.has(nom) ? '✓ ' : ''}${echap(nom)}</button>`).join('')}</div>`).join('')}
+    </section>`).join('') + `
+    <div class="rangee-btn no-print"><button class="btn discret" data-action="modifier-habituels">✏️ Modifier ces listes de produits</button></div>`;
+}
 function vueCourses() {
   const articles = calculerCourses();
   const nbRepas = Object.keys(etat.planning.repas).length;
@@ -491,30 +524,32 @@ function vueCourses() {
     return `<label class="article ${c ? 'coche' : ''}">
       <input type="checkbox" data-action="cocher" data-cle="${echap(a.cle)}" ${c ? 'checked' : ''}>
       <span class="art-texte"><span class="art-nom">${a.texteQ ? `<strong>${echap(a.texteQ)}</strong> ` : ''}${echap(a.nom)}</span>
-      ${a.sources ? `<span class="art-src">pour : ${echap(a.sources.join(', '))}</span>` : ''}</span>
+      ${a.sources && a.sources.length ? `<span class="art-src">pour : ${echap(a.sources.join(', '))}</span>` : ''}</span>
       ${perso ? `<button class="suppr" data-action="suppr-ajout" data-cle="${echap(a.cle)}" aria-label="Retirer">✕</button>` : ''}
     </label>`;
   };
-  let html = RAYONS.filter(r => parRayon[r]).map(r => `
+  let html = RAYONS_LISTE().filter(r => parRayon[r]).map(r => `
     <div class="rayon"><h3>${echap(r)}</h3>
       ${parRayon[r].sort((a, b) => (a.tri || a.nom).localeCompare(b.tri || b.nom, 'fr')).map(a => ligne(a)).join('')}
     </div>`).join('');
-  if (etat.ajouts.length) html += `<div class="rayon"><h3>Ajouté à la main</h3>${etat.ajouts.map(a => ligne({ cle: a.cle, nom: a.nom }, true)).join('')}</div>`;
+  if (ajoutsListe().length) html += `<div class="rayon"><h3>Ajouté à la main</h3>${ajoutsListe().map(a => ligne({ cle: a.cle, nom: a.nom }, true)).join('')}</div>`;
 
   return `
     <h1>Liste de courses</h1>
-    <p class="aide">${nbRepas ? `Pour ${nbRepas > 1 ? 'les ' + nbRepas + ' repas' : 'le repas'} du menu de la semaine. Cochez au fur et à mesure dans le magasin.` : ''}</p>
-    ${!nbRepas && !etat.ajouts.length ? `<div class="vide"><div class="gros">🛒</div><p>La liste est vide : choisissez d'abord des plats dans le menu de la semaine.</p>
+    <p class="aide">${nbRepas ? `Pour ${nbRepas > 1 ? 'les ' + nbRepas + ' repas' : 'le repas'} du menu de la semaine. ` : ''}Cochez au fur et à mesure dans le magasin.</p>
+    ${!articles.length && !ajoutsListe().length ? `<div class="vide"><div class="gros">🛒</div><p>La liste est vide : choisissez des plats dans le menu de la semaine, ou touchez plus bas les produits à racheter.</p>
       <a class="btn principal grand" href="#/semaine">📅 Aller au menu de la semaine</a></div>` : `<div class="bloc liste-courses">${html}</div>`}
     <form class="ajout-article no-print" data-action="ajout-article">
-      <input type="text" id="nouvel-article" placeholder="Ajouter autre chose (ex. : papier toilette)" aria-label="Ajouter un article">
+      <input type="text" id="nouvel-article" placeholder="Ajouter autre chose (ex. : piles)" aria-label="Ajouter un article">
       <button class="btn principal" type="submit">Ajouter</button>
     </form>
     <div class="rangee-btn">
       <button class="btn principal grand" data-action="imprimer">🖨️ Imprimer la liste</button>
       <button class="btn grand" data-action="partager-courses">📤 Envoyer sur un téléphone</button>
       ${Object.keys(etat.coches).length ? `<button class="btn grand discret" data-action="decocher">Tout décocher</button>` : ''}
-    </div>`;
+      ${achats().length || ajoutsListe().length ? `<button class="btn grand danger" data-action="vider-liste">Retirer les produits ajoutés</button>` : ''}
+    </div>
+    ${vuePanneaux()}`;
 }
 
 /* ----- Formulaire d'ajout / modification ----- */
@@ -803,11 +838,39 @@ document.addEventListener('click', async e => {
       sauverPlanning(); ouvrirPlat(el.dataset.cle, n); redessinerEnGardantPosition(); break;
     }
     case 'vider-semaine':
-      confirmer('Effacer le menu ?', 'Tous les plats de la semaine seront enlevés. Les recettes, elles, ne sont pas supprimées.', 'Oui, effacer le menu', () => {
-        etat.planning.repas = {}; etat.coches = {}; ecrireLocal('recettes-coches', {}); sauverPlanning(); afficher();
+      confirmer('Effacer le menu ?', 'Tous les plats de la semaine seront enlevés, ainsi que les produits ajoutés à la liste de courses. Les recettes, elles, ne sont pas supprimées.', 'Oui, effacer le menu', () => {
+        etat.planning.repas = {}; etat.planning.achats = []; etat.planning.ajouts = [];
+        etat.coches = {}; ecrireLocal('recettes-coches', {}); sauverPlanning(); afficher();
       }, true); break;
+    case 'vider-liste':
+      confirmer('Retirer les produits ajoutés ?', 'Les produits du quotidien, les courses habituelles et les articles ajoutés à la main seront retirés de la liste. Le menu de la semaine ne change pas.', 'Oui, les retirer', () => {
+        etat.planning.achats = []; etat.planning.ajouts = []; sauverPlanning(); redessinerEnGardantPosition();
+      }, true); break;
+    case 'hab': {
+      const nom = el.dataset.nom, liste = achats(), i = liste.indexOf(nom);
+      if (i >= 0) liste.splice(i, 1); else liste.push(nom);
+      sauverPlanning(); redessinerEnGardantPosition();
+      toast(i >= 0 ? `Retiré de la liste : ${nom}` : `🛒 Ajouté à la liste : ${nom}`, 1800); break;
+    }
+    case 'modifier-habituels':
+      ouvrirModale(`<h2>Modifier les listes de produits</h2><p class="aide">Un produit par ligne. Ces listes sont partagées entre vos appareils.</p>
+        ${catalogue().map((c, ic) => c.groupes.map((g, ig) => `<div class="champ"><label for="hab-${ic}-${ig}">${echap(c.titre)}${g.titre ? ' — ' + echap(g.titre) : ''}</label>
+          <textarea id="hab-${ic}-${ig}" rows="8">${echap(g.items.join('\n'))}</textarea></div>`).join('')).join('')}
+        <div class="rangee-btn"><button class="btn principal grand" data-action="sauver-habituels">Enregistrer</button>
+        <button class="btn grand discret" data-action="fermer-modale">Annuler</button></div>`);
+      break;
+    case 'sauver-habituels': {
+      const nouveau = JSON.parse(JSON.stringify(catalogue()));
+      nouveau.forEach((c, ic) => c.groupes.forEach((g, ig) => {
+        g.items = [...new Set($('#hab-' + ic + '-' + ig).value.split('\n').map(x => x.trim()).filter(Boolean))];
+      }));
+      etat.planning.habituels = nouveau;
+      const tous = new Set(nouveau.flatMap(c => c.groupes.flatMap(g => g.items)));
+      etat.planning.achats = achats().filter(n => tous.has(n));
+      sauverPlanning(); fermerModale(); redessinerEnGardantPosition(); toast('Listes enregistrées.'); break;
+    }
     case 'decocher': etat.coches = {}; ecrireLocal('recettes-coches', {}); redessinerEnGardantPosition(); break;
-    case 'suppr-ajout': e.preventDefault(); etat.ajouts = etat.ajouts.filter(x => x.cle !== el.dataset.cle); ecrireLocal('recettes-ajouts', etat.ajouts); redessinerEnGardantPosition(); break;
+    case 'suppr-ajout': e.preventDefault(); etat.planning.ajouts = ajoutsListe().filter(x => x.cle !== el.dataset.cle); sauverPlanning(); redessinerEnGardantPosition(); break;
     case 'partager-courses': partagerCourses(); break;
     case 'supprimer-recette': {
       const r = recette(el.dataset.id);
@@ -882,7 +945,7 @@ document.addEventListener('submit', async e => {
   if (a === 'enregistrer') enregistrerRecette();
   if (a === 'ajout-article') {
     const v = $('#nouvel-article').value.trim(); if (!v) return;
-    etat.ajouts.push({ cle: 'perso-' + Date.now(), nom: v }); ecrireLocal('recettes-ajouts', etat.ajouts);
+    ajoutsListe().push({ cle: 'perso-' + Date.now(), nom: v }); sauverPlanning();
     redessinerEnGardantPosition(); $('#nouvel-article').focus();
   }
   if (a === 'sauver-reglages') {
@@ -908,8 +971,8 @@ async function partagerCourses() {
   const parRayon = {};
   for (const a of articles) if (!etat.coches[a.cle]) (parRayon[a.rayon] = parRayon[a.rayon] || []).push(a);
   let texte = '🛒 Liste de courses\n';
-  for (const r of RAYONS) if (parRayon[r]) texte += `\n${r.toUpperCase()}\n` + parRayon[r].map(a => `- ${a.texteQ ? a.texteQ + ' ' : ''}${a.nom}`).join('\n') + '\n';
-  const perso = etat.ajouts.filter(a => !etat.coches[a.cle]);
+  for (const r of RAYONS_LISTE()) if (parRayon[r]) texte += `\n${r.toUpperCase()}\n` + parRayon[r].map(a => `- ${a.texteQ ? a.texteQ + ' ' : ''}${a.nom}`).join('\n') + '\n';
+  const perso = ajoutsListe().filter(a => !etat.coches[a.cle]);
   if (perso.length) texte += '\nAUTRES\n' + perso.map(a => '- ' + a.nom).join('\n') + '\n';
   if (navigator.share) { try { await navigator.share({ title: 'Liste de courses', text: texte }); } catch { } return; }
   try { await navigator.clipboard.writeText(texte); toast('📋 Liste copiée : collez-la dans un SMS ou un e-mail.', 4500); }
