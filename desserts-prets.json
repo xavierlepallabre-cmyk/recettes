@@ -1,0 +1,283 @@
+[
+  {
+    "id": "crepes-legeres",
+    "titre": "Crêpes légères",
+    "categorie": "Dessert",
+    "portions": 4,
+    "tempsPrep": null,
+    "tempsCuisson": null,
+    "photo": "",
+    "ingredients": [
+      {
+        "q": 150,
+        "u": "g",
+        "nom": "farine",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 50,
+        "u": "g",
+        "nom": "maïzena",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 1,
+        "u": "pincée",
+        "nom": "sel",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 1,
+        "u": "sachet",
+        "nom": "levure",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 3,
+        "u": "c. à soupe",
+        "nom": "huile",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 30,
+        "u": "cl",
+        "nom": "eau",
+        "rayon": "Autre"
+      },
+      {
+        "q": 30,
+        "u": "cl",
+        "nom": "lait",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": 4,
+        "u": "",
+        "nom": "œufs",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": 2,
+        "u": "c. à soupe",
+        "nom": "sucre en poudre",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 2,
+        "u": "sachet",
+        "nom": "sucre vanillé",
+        "rayon": "Épicerie"
+      }
+    ],
+    "etapes": [
+      "Mélanger la farine, les sucres, la maïzena, la levure, le sel et les œufs.",
+      "Délayer peu à peu avec l'eau et le lait.",
+      "Graisser la poêle et cuire à feu vif."
+    ],
+    "notes": "16 crêpes environ."
+  },
+  {
+    "id": "mousse-chocolat",
+    "titre": "Mousse au chocolat",
+    "categorie": "Dessert",
+    "portions": 6,
+    "tempsPrep": null,
+    "tempsCuisson": null,
+    "photo": "",
+    "ingredients": [
+      {
+        "q": 4,
+        "u": "",
+        "nom": "œufs",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": 100,
+        "u": "g",
+        "nom": "crème fraîche",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": 60,
+        "u": "g",
+        "nom": "sucre",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 200,
+        "u": "g",
+        "nom": "chocolat",
+        "rayon": "Épicerie"
+      }
+    ],
+    "etapes": [
+      "Faire fondre le chocolat avec le sucre et la crème.",
+      "Rajouter les jaunes d'œufs, puis les blancs en neige."
+    ],
+    "notes": ""
+  },
+  {
+    "id": "creme-citron",
+    "titre": "Crème au citron (tarte au citron)",
+    "categorie": "Dessert",
+    "portions": 6,
+    "tempsPrep": null,
+    "tempsCuisson": 15,
+    "photo": "",
+    "ingredients": [
+      {
+        "q": 200,
+        "u": "g",
+        "nom": "sucre",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 4,
+        "u": "",
+        "nom": "œufs",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": 100,
+        "u": "g",
+        "nom": "beurre",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": 1,
+        "u": "",
+        "nom": "zeste de citron",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 3,
+        "u": "",
+        "nom": "citrons (150 ml de jus, compléter avec de l'eau si pas assez)",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 1,
+        "u": "",
+        "nom": "pâte à tarte",
+        "rayon": "Crèmerie – Œufs"
+      }
+    ],
+    "etapes": [
+      "Mélanger le sucre et les œufs dans une casserole.",
+      "Ajouter le beurre.",
+      "Mélanger au bain-marie.",
+      "Ajouter le zeste et le jus de citron.",
+      "Verser la crème sur la pâte.",
+      "Cuire à 180 °C 15 min en surveillant, jusqu'à ce qu'elle soit dorée."
+    ],
+    "notes": ""
+  },
+  {
+    "id": "creme-speculoos",
+    "titre": "Crème spéculoos",
+    "categorie": "Dessert",
+    "portions": 6,
+    "tempsPrep": null,
+    "tempsCuisson": 60,
+    "photo": "",
+    "ingredients": [
+      {
+        "q": 35,
+        "u": "cl",
+        "nom": "crème liquide",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": 12,
+        "u": "cl",
+        "nom": "lait demi-écrémé",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": 70,
+        "u": "g",
+        "nom": "sucre",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 4,
+        "u": "",
+        "nom": "jaunes d'œufs",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "vanille liquide (4 à 5 c. à café)",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "spéculoos (6 à 7)",
+        "rayon": "Épicerie"
+      }
+    ],
+    "etapes": [
+      "Fouetter les œufs et le sucre afin que le mélange blanchisse.",
+      "Incorporer la crème froide.",
+      "Faire chauffer le lait avec la vanille liquide.",
+      "Ajouter le lait au mélange.",
+      "Mouliner les spéculoos, puis les ajouter au mélange. Remuer.",
+      "Remplir des ramequins et les placer dans un plat.",
+      "Faire chauffer au four 1 h à 1 h 15.",
+      "Sortez-les du four, puis mettez-les au réfrigérateur."
+    ],
+    "notes": ""
+  },
+  {
+    "id": "creme-oeufs",
+    "titre": "Crème aux œufs",
+    "categorie": "Dessert",
+    "portions": 8,
+    "tempsPrep": null,
+    "tempsCuisson": 30,
+    "photo": "",
+    "ingredients": [
+      {
+        "q": 4,
+        "u": "",
+        "nom": "œufs",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": 0.5,
+        "u": "l",
+        "nom": "lait",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": 130,
+        "u": "g",
+        "nom": "sucre",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 1,
+        "u": "sachet",
+        "nom": "sucre vanillé",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "vanille liquide (4 à 5 c. à café)",
+        "rayon": "Épicerie"
+      }
+    ],
+    "etapes": [
+      "Faire chauffer le lait avec le sucre vanillé et la vanille liquide.",
+      "Battre les œufs et le sucre jusqu'à ce que le mélange blanchisse.",
+      "Verser le lait chaud sur le mélange.",
+      "Verser dans des ramequins, puis les placer dans un plat.",
+      "Faire chauffer de l'eau et la mettre dans le plat.",
+      "Mettre au four 30 minutes à 180 °C."
+    ],
+    "notes": "Pour 8 crèmes."
+  }
+]

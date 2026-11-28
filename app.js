@@ -12,7 +12,7 @@ const REPAS = ['Midi', 'Soir'];
 const CATEGORIES = ['Entrée', 'Plat', 'Dessert', 'Soupe', 'Apéritif', 'Accompagnement', 'Petit-déjeuner', 'Boisson', 'Autre'];
 const EMOJI = { 'Entrée': '🥗', 'Plat': '🍲', 'Dessert': '🍰', 'Soupe': '🥣', 'Apéritif': '🧀', 'Accompagnement': '🥔', 'Petit-déjeuner': '🥐', 'Boisson': '🍹', 'Autre': '🍽️' };
 const RAYONS = ['Fruits et légumes', 'Boucherie – Poissonnerie', 'Crèmerie – Œufs', 'Épicerie', 'Boulangerie', 'Surgelés', 'Boissons', 'Autre'];
-const UNITES = ['', 'g', 'kg', 'ml', 'cl', 'l', 'c. à soupe', 'c. à café', 'pincée', 'sachet', 'boîte', 'pot', 'tranche', 'gousse', 'botte', 'verre'];
+const UNITES = ['', 'g', 'kg', 'ml', 'cl', 'l', 'c. à soupe', 'c. à café', 'pincée', 'sachet', 'boîte', 'brique', 'paquet', 'cube', 'tablette', 'pot', 'tranche', 'gousse', 'botte', 'verre'];
 const ALIAS_UNITES = {
   'g': 'g', 'gr': 'g', 'gramme': 'g', 'grammes': 'g', 'kg': 'kg', 'kilo': 'kg', 'kilos': 'kg',
   'ml': 'ml', 'cl': 'cl', 'dl': 'dl', 'l': 'l', 'litre': 'l', 'litres': 'l',
@@ -20,7 +20,8 @@ const ALIAS_UNITES = {
   'c. à café': 'c. à café', 'c.à.c': 'c. à café', 'càc': 'c. à café', 'cc': 'c. à café', 'cuillère à café': 'c. à café', 'cuillères à café': 'c. à café', 'cuil. à café': 'c. à café',
   'pincée': 'pincée', 'pincées': 'pincée', 'sachet': 'sachet', 'sachets': 'sachet', 'boîte': 'boîte', 'boîtes': 'boîte',
   'pot': 'pot', 'pots': 'pot', 'tranche': 'tranche', 'tranches': 'tranche', 'gousse': 'gousse', 'gousses': 'gousse',
-  'botte': 'botte', 'bottes': 'botte', 'verre': 'verre', 'verres': 'verre'
+  'botte': 'botte', 'bottes': 'botte', 'verre': 'verre', 'verres': 'verre',
+  'brique': 'brique', 'briques': 'brique', 'paquet': 'paquet', 'paquets': 'paquet', 'cube': 'cube', 'cubes': 'cube', 'tablette': 'tablette', 'tablettes': 'tablette'
 };
 const MOTS_RAYONS = {
   'Fruits et légumes': ['pomme', 'poire', 'citron', 'orange', 'banane', 'fraise', 'tomate', 'carotte', 'oignon', 'échalote', 'ail', 'poireau', 'courgette', 'aubergine', 'poivron', 'salade', 'laitue', 'épinard', 'champignon', 'potiron', 'courge', 'butternut', 'pomme de terre', 'patate', 'chou', 'brocoli', 'concombre', 'radis', 'navet', 'céleri', 'persil', 'ciboulette', 'basilic', 'coriandre', 'menthe', 'thym', 'laurier', 'avocat', 'haricot vert', 'petits pois', 'fruits rouges', 'framboise', 'myrtille', 'abricot', 'pêche', 'raisin', 'gingembre', 'endive', 'fenouil', 'betterave'],
@@ -78,12 +79,36 @@ function afficherNombre(n) {
   if (fr && r < 10) return (ent ? ent : '') + fr;
   return String(Math.round(r * 10) / 10).replace('.', ',');
 }
-const PLURIEL = { 'pincée': 'pincées', 'sachet': 'sachets', 'boîte': 'boîtes', 'pot': 'pots', 'tranche': 'tranches', 'gousse': 'gousses', 'botte': 'bottes', 'verre': 'verres' };
+const PLURIEL = { 'pincée': 'pincées', 'sachet': 'sachets', 'boîte': 'boîtes', 'pot': 'pots', 'tranche': 'tranches', 'gousse': 'gousses', 'botte': 'bottes', 'verre': 'verres', 'brique': 'briques', 'paquet': 'paquets', 'cube': 'cubes', 'tablette': 'tablettes' };
 function qteTexte(q, u) {
   const n = q != null ? afficherNombre(q) : '';
   const unite = q != null && q > 1 && PLURIEL[u] ? PLURIEL[u] : u;
   return [n, unite].filter(Boolean).join(' ');
 }
+
+/* ---- Accords : « 2 poivrons rouges », « 1 pomme de terre », « 4 gousses d'ail » ---- */
+const COUPURE = /( de | d'| d’| à | au | aux | en |\s*\()/;
+function accorderTete(nom, fn) {
+  const m = nom.split(COUPURE);
+  const tete = m.shift();
+  return tete.split(' ').map(fn).join(' ') + m.join('');
+}
+const motPluriel = w => !w || /[sxz]$/i.test(w) || w.length < 2 ? w : /eau$/i.test(w) ? w + 'x' : w + 's';
+const motSingulier = w => /eaux$/i.test(w) ? w.slice(0, -1) : w.length > 3 && /[^s]s$/i.test(w) ? w.slice(0, -1) : w;
+const pluriel = nom => accorderTete(nom, motPluriel);
+const singulier = nom => accorderTete(nom, motSingulier);
+/* « de » ou « d' » devant le nom quand il y a une unité */
+const avecDe = nom => (/^[aeiouyhâàéèêëîïôœû]/i.test(nom) ? "d'" : 'de ') + nom;
+/* Texte complet d'un ingrédient pour une quantité donnée */
+function libelleIngredient(q, u, nom, detail) {
+  let txt;
+  if (u && q != null) txt = qteTexte(q, u) + ' ' + avecDe(nom);
+  else if (q != null) txt = qteTexte(q, '') + ' ' + (q > 1 ? pluriel(nom) : singulier(nom));
+  else txt = nom;
+  return detail ? txt + ' ' + detail : txt;
+}
+/* Clé de regroupement dans la liste de courses : « Oignons » = « oignon » */
+const cleIngredient = nom => normaliser(nom).split(/\s+/).map(w => w.replace(/(?<=..)[sx]$/, '')).join(' ');
 function devinerRayon(nom) {
   const n = normaliser(nom);
   let meilleur = 'Autre', long = 0;
@@ -112,7 +137,11 @@ function analyserLigne(ligne) {
   if (u === 'dl') { u = 'cl'; if (q != null) q *= 10; }
   reste = reste.replace(/^(de |d'|d’|des |du )/i, '').trim();
   if (!reste) return null;
-  return { q, u, nom: reste, rayon: devinerRayon(reste) };
+  // ce qui est entre parenthèses ou après une virgule devient la précision
+  let detail = '';
+  const p = reste.match(/^(.*?)\s*(\(.*\).*|,\s*.*)$/);
+  if (p && p[1]) { reste = p[1].trim(); detail = p[2].replace(/^,\s*/, '').trim(); }
+  return { q, u, nom: reste, detail, rayon: devinerRayon(reste) };
 }
 
 /* ---------------- Connexion GitHub (mode gestion) ---------------- */
@@ -341,7 +370,10 @@ function vueRecette(id) {
   const pour = etat.portionsVues?.[id] || r.portions || 4;
   const ratio = r.portions ? pour / r.portions : 1;
   const ingr = (r.ingredients || []).map(i => {
-    return `<li><span class="qte">${echap(qteTexte(i.q != null ? i.q * ratio : null, i.u))}</span> ${echap(i.nom)}</li>`;
+    const q = i.q != null ? i.q * ratio : null;
+    const txt = libelleIngredient(q, i.u, i.nom, i.detail);
+    const qt = q != null ? qteTexte(q, i.u) : '';
+    return `<li>${qt ? `<span class="qte">${echap(qt)}</span>${echap(txt.slice(qt.length))}` : echap(txt)}</li>`;
   }).join('');
   const etapes = (r.etapes || []).map(e => `<li>${echap(e)}</li>`).join('');
   return `
@@ -417,24 +449,35 @@ function calculerCourses() {
       if (u === 'kg') { q = q != null ? q * 1000 : q; u = 'g'; }
       if (u === 'l') { q = q != null ? q * 1000 : q; u = 'ml'; }
       if (u === 'cl') { q = q != null ? q * 10 : q; u = 'ml'; }
-      const cle = normaliser(i.nom) + '|' + u;
-      if (!articles[cle]) articles[cle] = { cle, nom: i.nom, u, q: null, rayon: i.rayon || devinerRayon(i.nom), sources: new Set() };
-      if (q != null) articles[cle].q = (articles[cle].q || 0) + q;
-      articles[cle].sources.add(r.titre);
+      const cle = cleIngredient(i.nom);
+      const a = articles[cle] || (articles[cle] = { cle, nom: i.nom, rayon: i.rayon || devinerRayon(i.nom), parts: {}, sansQte: false, sources: new Set(), details: [] });
+      if (q != null) a.parts[u] = (a.parts[u] || 0) + q; else a.sansQte = true;
+      a.sources.add(r.titre);
+      a.details.push(i.detail || '');
     }
   }
+  const ordreU = u => ['g', 'ml', ''].indexOf(u) >= 0 ? ['g', 'ml', ''].indexOf(u) : 3;
   return Object.values(articles).map(a => {
-    let q = a.q, u = a.u;
-    // Arrondi « magasin » : on arrondit toujours au-dessus
-    if (q != null) {
+    const morceaux = Object.entries(a.parts).sort((x, y) => ordreU(x[0]) - ordreU(y[0])).map(([u, q]) => {
+      // Arrondi « magasin » : on arrondit toujours au-dessus
       if (u === 'g' || u === 'ml') q = q > 100 ? Math.ceil(q / 10 - 1e-9) * 10 : Math.ceil(q - 1e-9);
       else if (u === 'c. à soupe' || u === 'c. à café') q = Math.ceil(q * 2 - 1e-9) / 2;
       else q = Math.ceil(q - 0.05);
-    }
-    if (u === 'g' && q >= 1000) { q /= 1000; u = 'kg'; }
-    else if (u === 'ml' && q >= 1000) { q /= 1000; u = 'l'; }
-    else if (u === 'ml' && q != null && q >= 50 && Math.abs(q / 10 - Math.round(q / 10)) < .01) { q /= 10; u = 'cl'; }
-    return { ...a, texteQ: qteTexte(q, u), sources: [...a.sources] };
+      if (u === 'g' && q >= 1000) { q /= 1000; u = 'kg'; }
+      else if (u === 'ml' && q >= 1000) { q /= 1000; u = 'l'; }
+      else if (u === 'ml' && q >= 50 && Math.abs(q / 10 - Math.round(q / 10)) < .01) { q /= 10; u = 'cl'; }
+      return { q, u };
+    });
+    let texteQ = '', nom = a.nom;
+    if (morceaux.length) {
+      texteQ = morceaux.map(m => qteTexte(m.q, m.u)).join(' + ');
+      const seulCompte = morceaux.length === 1 && !morceaux[0].u;
+      nom = seulCompte ? (morceaux[0].q > 1 ? pluriel(a.nom) : singulier(a.nom)) : avecDe(a.nom);
+      if (a.sansQte) nom += ' (+ un peu)';
+    } else nom = a.nom;
+    // une précision entre parenthèses utile pour l'achat, quand l'article ne vient que d'une recette
+    if (a.details.length === 1 && /^\(/.test(a.details[0])) nom += ' ' + a.details[0];
+    return { cle: a.cle, rayon: a.rayon, texteQ, nom: nom.trim(), tri: normaliser(a.nom), sources: [...a.sources] };
   });
 }
 
@@ -454,7 +497,7 @@ function vueCourses() {
   };
   let html = RAYONS.filter(r => parRayon[r]).map(r => `
     <div class="rayon"><h3>${echap(r)}</h3>
-      ${parRayon[r].sort((a, b) => a.nom.localeCompare(b.nom, 'fr')).map(a => ligne(a)).join('')}
+      ${parRayon[r].sort((a, b) => (a.tri || a.nom).localeCompare(b.tri || b.nom, 'fr')).map(a => ligne(a)).join('')}
     </div>`).join('');
   if (etat.ajouts.length) html += `<div class="rayon"><h3>Ajouté à la main</h3>${etat.ajouts.map(a => ligne({ cle: a.cle, nom: a.nom }, true)).join('')}</div>`;
 
@@ -514,7 +557,7 @@ function vueEdition(id) {
 
       <div class="champ"><span class="etiquette">Ingrédients</span>
         <p class="aide">Pour aller vite : <button type="button" class="btn discret" style="min-height:40px;padding:.2rem .8rem" data-action="coller-ingr">📋 Coller une liste d'ingrédients</button></p>
-        <div class="entete-ingr"><span>Quantité</span><span>Unité</span><span>Ingrédient</span><span>Rayon (courses)</span><span></span></div>
+        <div class="entete-ingr"><span>Quantité</span><span>Unité</span><span>Ingrédient (ce qu'on achète)</span><span>Précision</span><span>Rayon (courses)</span><span></span></div>
         <div id="lignes-ingr">${b.ingredients.map((i, n) => ligneIngredient(i, n)).join('')}</div>
         <button type="button" class="btn discret" data-action="ajout-ingr">＋ Ajouter un ingrédient</button>
       </div>
@@ -536,7 +579,8 @@ function ligneIngredient(i, n) {
   return `<div class="ligne-ingr" data-n="${n}">
     <input type="text" inputmode="decimal" class="q-ingr" value="${i.q != null ? echap(String(i.q).replace('.', ',')) : ''}" placeholder="Qté" aria-label="Quantité">
     <input type="text" class="u-ingr" list="liste-unites" value="${echap(i.u || '')}" placeholder="unité" aria-label="Unité">
-    <input type="text" class="nom-ingr" value="${echap(i.nom)}" placeholder="ex. : farine" aria-label="Ingrédient">
+    <input type="text" class="nom-ingr" value="${echap(i.nom)}" placeholder="ex. : oignon" aria-label="Ingrédient">
+    <input type="text" class="detail-ingr" value="${echap(i.detail || '')}" placeholder="ex. : émincés" aria-label="Précision">
     <select class="rayon-ingr" aria-label="Rayon">${RAYONS.map(r => `<option ${i.rayon === r ? 'selected' : ''}>${r}</option>`).join('')}</select>
     <button type="button" data-action="suppr-ingr" data-n="${n}" aria-label="Retirer cet ingrédient">✕</button>
   </div>`;
@@ -551,7 +595,7 @@ function lireFormulaire() {
   b.tempsCuisson = parseInt($('#f-cuis').value) || '';
   b.ingredients = [...document.querySelectorAll('.ligne-ingr')].map(l => ({
     q: lireNombre($('.q-ingr', l).value), u: $('.u-ingr', l).value.trim(),
-    nom: $('.nom-ingr', l).value.trim(), rayon: $('.rayon-ingr', l).value
+    nom: $('.nom-ingr', l).value.trim(), detail: $('.detail-ingr', l).value.trim(), rayon: $('.rayon-ingr', l).value
   }));
   b.etapes = $('#f-etapes').value.split('\n').map(s => s.replace(/^\s*\d+[.)-]\s*/, '').trim()).filter(Boolean);
   b.notes = $('#f-notes').value.trim();

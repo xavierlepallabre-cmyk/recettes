@@ -11,25 +11,36 @@
       {
         "q": 1,
         "u": "",
-        "nom": "saucisse de Morteau (ou 2 selon appétit)",
+        "nom": "saucisse de Morteau",
+        "detail": "(ou 2 selon appétit)",
         "rayon": "Boucherie – Poissonnerie"
       },
       {
         "q": 4,
         "u": "",
-        "nom": "grosses pommes de terre",
+        "nom": "grosse pomme de terre",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 2,
         "u": "",
-        "nom": "oignons",
+        "nom": "oignon",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": null,
         "u": "",
-        "nom": "sel, poivre",
+        "nom": "sel",
+        "detail": "",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "poivre",
+        "detail": "",
         "rayon": "Épicerie"
       }
     ],
@@ -54,60 +65,77 @@
         "q": 250,
         "u": "g",
         "nom": "riz long",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 250,
         "u": "g",
         "nom": "chorizo",
+        "detail": "",
         "rayon": "Boucherie – Poissonnerie"
       },
       {
         "q": 2,
         "u": "",
-        "nom": "poivrons rouges (ou 1 vert + 1 rouge)",
+        "nom": "poivron rouge",
+        "detail": "(ou 1 vert + 1 rouge)",
         "rayon": "Fruits et légumes"
       },
       {
         "q": null,
         "u": "",
-        "nom": "quelques olives vertes",
+        "nom": "olives vertes",
+        "detail": "(quelques-unes)",
         "rayon": "Épicerie"
       },
       {
         "q": null,
         "u": "",
         "nom": "huile d'olive",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 75,
         "u": "g",
         "nom": "ventrêche",
+        "detail": "",
         "rayon": "Boucherie – Poissonnerie"
       },
       {
         "q": 2,
         "u": "",
-        "nom": "poivrons verts (ou 1 vert + 1 rouge)",
+        "nom": "poivron vert",
+        "detail": "(ou 1 vert + 1 rouge)",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 3,
         "u": "",
-        "nom": "oignons",
+        "nom": "oignon",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 1,
-        "u": "",
-        "nom": "petite brique de coulis de tomate",
+        "u": "brique",
+        "nom": "coulis de tomate",
+        "detail": "(petite)",
         "rayon": "Épicerie"
       },
       {
         "q": null,
         "u": "",
-        "nom": "sel, poivre",
+        "nom": "sel",
+        "detail": "",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "poivre",
+        "detail": "",
         "rayon": "Épicerie"
       }
     ],
@@ -134,85 +162,106 @@
       {
         "q": 600,
         "u": "g",
-        "nom": "bœuf (paleron ou macreuse) coupé en cubes de 3 cm",
+        "nom": "bœuf (paleron ou macreuse)",
+        "detail": "coupé en cubes de 3 cm",
         "rayon": "Boucherie – Poissonnerie"
       },
       {
         "q": 20,
         "u": "cl",
-        "nom": "coulis de tomates",
+        "nom": "coulis de tomate",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 1,
         "u": "",
         "nom": "petite boîte de maïs",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 150,
         "u": "g",
         "nom": "riz long",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 1,
         "u": "",
         "nom": "poivron rouge",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 1,
         "u": "",
         "nom": "poivron vert",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 2,
         "u": "",
-        "nom": "carottes",
+        "nom": "carotte",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 2,
         "u": "",
-        "nom": "oignons émincés",
+        "nom": "oignon",
+        "detail": "émincés",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 2,
         "u": "gousse",
         "nom": "ail",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 2,
-        "u": "",
-        "nom": "tablettes de bouillon de bœuf",
+        "u": "tablette",
+        "nom": "bouillon de bœuf",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 1,
         "u": "c. à soupe",
         "nom": "paprika",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": null,
         "u": "",
         "nom": "tabasco",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 3,
         "u": "c. à soupe",
         "nom": "huile",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": null,
         "u": "",
-        "nom": "sel, poivre",
+        "nom": "sel",
+        "detail": "",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "poivre",
+        "detail": "",
         "rayon": "Épicerie"
       }
     ],
@@ -240,49 +289,64 @@
       {
         "q": 1,
         "u": "kg",
-        "nom": "bœuf à bourguignon (1 à 1,2 kg)",
+        "nom": "bœuf à bourguignon",
+        "detail": "(1 à 1,2 kg)",
         "rayon": "Boucherie – Poissonnerie"
       },
       {
         "q": 2,
         "u": "",
-        "nom": "carottes",
+        "nom": "carotte",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 2,
         "u": "",
-        "nom": "oignons",
+        "nom": "oignon",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 250,
         "u": "g",
         "nom": "champignons",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 1,
         "u": "c. à soupe",
         "nom": "farine",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 25,
         "u": "cl",
         "nom": "vin blanc",
+        "detail": "",
         "rayon": "Boissons"
       },
       {
         "q": null,
         "u": "",
-        "nom": "sel, poivre",
+        "nom": "sel",
+        "detail": "",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "poivre",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": null,
         "u": "",
         "nom": "herbes de Provence",
+        "detail": "",
         "rayon": "Épicerie"
       }
     ],
@@ -307,85 +371,99 @@
       {
         "q": 500,
         "u": "g",
-        "nom": "semoule (1 verre de semoule pour 1 verre d'eau bouillante salée)",
+        "nom": "semoule",
+        "detail": "(1 verre de semoule pour 1 verre d'eau bouillante salée)",
         "rayon": "Épicerie"
       },
       {
         "q": null,
         "u": "",
         "nom": "morceaux de mouton",
+        "detail": "",
         "rayon": "Boucherie – Poissonnerie"
       },
       {
         "q": null,
         "u": "",
         "nom": "morceaux de poulet",
+        "detail": "",
         "rayon": "Boucherie – Poissonnerie"
       },
       {
         "q": null,
         "u": "",
         "nom": "merguez",
+        "detail": "",
         "rayon": "Boucherie – Poissonnerie"
       },
       {
         "q": 500,
         "u": "g",
         "nom": "tomates",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": null,
         "u": "",
         "nom": "concentré ou coulis de tomate",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 500,
         "u": "g",
         "nom": "courgettes",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 500,
         "u": "g",
         "nom": "carottes et navets",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 2,
         "u": "",
-        "nom": "poivrons (vert et rouge)",
+        "nom": "poivron",
+        "detail": "(vert et rouge)",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 2,
         "u": "",
-        "nom": "oignons",
+        "nom": "oignon",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 1,
         "u": "gousse",
         "nom": "ail",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 2,
         "u": "",
-        "nom": "clous de girofle",
+        "nom": "clou de girofle",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 1,
         "u": "",
         "nom": "petite boîte de pois chiches",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 1,
         "u": "c. à soupe",
         "nom": "épices à couscous",
+        "detail": "",
         "rayon": "Épicerie"
       }
     ],
@@ -410,48 +488,63 @@
         "q": 1,
         "u": "",
         "nom": "pâte brisée",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": 4,
         "u": "",
-        "nom": "œufs",
+        "nom": "œuf",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": 2,
         "u": "verre",
-        "nom": "lait (petit verre bleu)",
+        "nom": "lait",
+        "detail": "(petits verres bleus)",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": 1,
         "u": "verre",
-        "nom": "crème liquide (petit verre)",
+        "nom": "crème liquide",
+        "detail": "(petit verre)",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": null,
         "u": "",
         "nom": "lardons",
+        "detail": "",
         "rayon": "Boucherie – Poissonnerie"
       },
       {
         "q": 1,
         "u": "sachet",
         "nom": "fromage râpé",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": 1,
         "u": "",
         "nom": "échalote",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": null,
         "u": "",
-        "nom": "sel, poivre",
+        "nom": "sel",
+        "detail": "",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "poivre",
+        "detail": "",
         "rayon": "Épicerie"
       }
     ],
@@ -477,61 +570,71 @@
       {
         "q": 800,
         "u": "g",
-        "nom": "paleron (800 g à 1 kg)",
+        "nom": "paleron",
+        "detail": "(800 g à 1 kg)",
         "rayon": "Boucherie – Poissonnerie"
       },
       {
         "q": 6,
         "u": "",
-        "nom": "oignons (700 g)",
+        "nom": "oignon",
+        "detail": "(700 g)",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 1,
         "u": "",
         "nom": "pomme de terre",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": null,
         "u": "",
         "nom": "huile d'olive",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 3,
         "u": "c. à soupe",
         "nom": "paprika doux",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": null,
         "u": "",
-        "nom": "un peu de piment de Cayenne",
+        "nom": "piment de Cayenne",
+        "detail": "(un peu)",
         "rayon": "Épicerie"
       },
       {
         "q": 0.5,
         "u": "c. à café",
         "nom": "cumin",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 2,
         "u": "c. à soupe",
-        "nom": "concentré de tomates",
+        "nom": "concentré de tomate",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 1,
         "u": "l",
-        "nom": "bouillon de bœuf (2 cubes)",
+        "nom": "bouillon de bœuf",
+        "detail": "(2 cubes)",
         "rayon": "Épicerie"
       },
       {
         "q": null,
         "u": "",
-        "nom": "poivre (pas de sel)",
+        "nom": "poivre",
+        "detail": "(pas de sel)",
         "rayon": "Épicerie"
       }
     ],
@@ -556,37 +659,43 @@
       {
         "q": 2,
         "u": "",
-        "nom": "carottes",
+        "nom": "carotte",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 2,
         "u": "",
-        "nom": "oignons",
+        "nom": "oignon",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": null,
         "u": "",
         "nom": "petit salé",
+        "detail": "",
         "rayon": "Boucherie – Poissonnerie"
       },
       {
         "q": null,
         "u": "",
-        "nom": "saucisse de Morteau ou Montbéliard, ou autres saucisses",
+        "nom": "saucisses",
+        "detail": "(Morteau, Montbéliard ou autres)",
         "rayon": "Boucherie – Poissonnerie"
       },
       {
         "q": 1,
-        "u": "",
-        "nom": "paquet de lentilles blondes",
+        "u": "paquet",
+        "nom": "lentilles blondes",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": null,
         "u": "",
         "nom": "herbes de Provence",
+        "detail": "",
         "rayon": "Épicerie"
       }
     ],
@@ -612,49 +721,64 @@
       {
         "q": 1,
         "u": "kg",
-        "nom": "porc (sauté ou rôti coupé en morceaux) — 1 à 1,5 kg",
+        "nom": "porc",
+        "detail": "(sauté ou rôti coupé en morceaux, 1 à 1,5 kg)",
         "rayon": "Boucherie – Poissonnerie"
       },
       {
         "q": 6,
         "u": "c. à café",
         "nom": "colombo",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 1,
         "u": "",
         "nom": "poivron rouge",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 1,
         "u": "",
         "nom": "poivron jaune",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 1,
-        "u": "",
-        "nom": "cube de bouillon de volaille",
+        "u": "cube",
+        "nom": "bouillon de volaille",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 2,
         "u": "",
-        "nom": "oignons",
+        "nom": "oignon",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": null,
         "u": "",
         "nom": "farine",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": null,
         "u": "",
-        "nom": "sel et poivre",
+        "nom": "sel",
+        "detail": "",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "poivre",
+        "detail": "",
         "rayon": "Épicerie"
       }
     ],
@@ -682,84 +806,105 @@
         "q": 800,
         "u": "g",
         "nom": "poisson",
+        "detail": "",
         "rayon": "Boucherie – Poissonnerie"
       },
       {
         "q": 300,
         "u": "g",
         "nom": "pétoncles",
+        "detail": "",
         "rayon": "Boucherie – Poissonnerie"
       },
       {
         "q": 2,
-        "u": "",
-        "nom": "petites boîtes de champignons (ou champignons frais)",
+        "u": "boîte",
+        "nom": "champignons",
+        "detail": "(petites, ou champignons frais)",
         "rayon": "Épicerie"
       },
       {
         "q": 0.5,
         "u": "sachet",
         "nom": "crevettes",
+        "detail": "",
         "rayon": "Boucherie – Poissonnerie"
       },
       {
         "q": null,
         "u": "",
         "nom": "mélange de fruits de mer",
+        "detail": "",
         "rayon": "Boucherie – Poissonnerie"
       },
       {
         "q": 5,
         "u": "",
-        "nom": "échalotes",
+        "nom": "échalote",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 1,
         "u": "",
         "nom": "jaune d'œuf",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": null,
         "u": "",
-        "nom": "crème fraîche (2 c. à café + 2 à 3 c. à soupe)",
+        "nom": "crème fraîche",
+        "detail": "(2 c. à café + 2 à 3 c. à soupe)",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": null,
         "u": "",
         "nom": "court-bouillon",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": null,
         "u": "",
         "nom": "fumet de poisson",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": null,
         "u": "",
         "nom": "farine",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 2,
         "u": "c. à soupe",
         "nom": "beurre",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": null,
         "u": "",
         "nom": "chapelure",
+        "detail": "",
         "rayon": "Boulangerie"
       },
       {
         "q": null,
         "u": "",
-        "nom": "sel, poivre",
+        "nom": "sel",
+        "detail": "",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "poivre",
+        "detail": "",
         "rayon": "Épicerie"
       }
     ],
@@ -786,60 +931,70 @@
         "q": 150,
         "u": "g",
         "nom": "farine",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 50,
         "u": "g",
         "nom": "maïzena",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 1,
         "u": "pincée",
         "nom": "sel",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 1,
         "u": "sachet",
         "nom": "levure",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 3,
         "u": "c. à soupe",
         "nom": "huile",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 30,
         "u": "cl",
         "nom": "eau",
+        "detail": "",
         "rayon": "Autre"
       },
       {
         "q": 30,
         "u": "cl",
         "nom": "lait",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": 4,
         "u": "",
-        "nom": "œufs",
+        "nom": "œuf",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": 2,
         "u": "c. à soupe",
-        "nom": "sucre en poudre",
+        "nom": "sucre",
+        "detail": "en poudre",
         "rayon": "Épicerie"
       },
       {
         "q": 2,
         "u": "sachet",
         "nom": "sucre vanillé",
+        "detail": "",
         "rayon": "Épicerie"
       }
     ],
@@ -862,25 +1017,29 @@
       {
         "q": 4,
         "u": "",
-        "nom": "œufs",
+        "nom": "œuf",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": 100,
         "u": "g",
         "nom": "crème fraîche",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": 60,
         "u": "g",
         "nom": "sucre",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 200,
         "u": "g",
         "nom": "chocolat",
+        "detail": "",
         "rayon": "Épicerie"
       }
     ],
@@ -903,36 +1062,42 @@
         "q": 200,
         "u": "g",
         "nom": "sucre",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 4,
         "u": "",
-        "nom": "œufs",
+        "nom": "œuf",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": 100,
         "u": "g",
         "nom": "beurre",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": 1,
         "u": "",
         "nom": "zeste de citron",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 3,
         "u": "",
-        "nom": "citrons (150 ml de jus, compléter avec de l'eau si pas assez)",
+        "nom": "citron",
+        "detail": "(150 ml de jus, compléter avec de l'eau si pas assez)",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 1,
         "u": "",
         "nom": "pâte à tarte",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       }
     ],
@@ -959,36 +1124,42 @@
         "q": 35,
         "u": "cl",
         "nom": "crème liquide",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": 12,
         "u": "cl",
         "nom": "lait demi-écrémé",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": 70,
         "u": "g",
         "nom": "sucre",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 4,
         "u": "",
-        "nom": "jaunes d'œufs",
+        "nom": "jaune d'œuf",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": null,
         "u": "",
-        "nom": "vanille liquide (4 à 5 c. à café)",
+        "nom": "vanille liquide",
+        "detail": "(4 à 5 c. à café)",
         "rayon": "Épicerie"
       },
       {
         "q": null,
         "u": "",
-        "nom": "spéculoos (6 à 7)",
+        "nom": "spéculoos",
+        "detail": "(6 à 7)",
         "rayon": "Épicerie"
       }
     ],
@@ -1016,31 +1187,36 @@
       {
         "q": 4,
         "u": "",
-        "nom": "œufs",
+        "nom": "œuf",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": 0.5,
         "u": "l",
         "nom": "lait",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": 130,
         "u": "g",
         "nom": "sucre",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 1,
         "u": "sachet",
         "nom": "sucre vanillé",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": null,
         "u": "",
-        "nom": "vanille liquide (4 à 5 c. à café)",
+        "nom": "vanille liquide",
+        "detail": "(4 à 5 c. à café)",
         "rayon": "Épicerie"
       }
     ],
@@ -1066,31 +1242,36 @@
       {
         "q": 20,
         "u": "cl",
-        "nom": "lait (ou 20 cl de lait de coco)",
+        "nom": "lait",
+        "detail": "(ou 20 cl de lait de coco)",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": 25,
         "u": "cl",
         "nom": "crème liquide",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": 60,
         "u": "g",
         "nom": "sucre",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 1,
         "u": "gousse",
-        "nom": "vanille (et quelques gouttes d'extrait)",
+        "nom": "vanille",
+        "detail": "(et quelques gouttes d'extrait)",
         "rayon": "Épicerie"
       },
       {
         "q": 3,
         "u": "",
-        "nom": "feuilles de gélatine",
+        "nom": "feuille de gélatine",
+        "detail": "",
         "rayon": "Épicerie"
       }
     ],
@@ -1115,67 +1296,78 @@
       {
         "q": 2,
         "u": "",
-        "nom": "œufs",
+        "nom": "œuf",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": 2,
         "u": "",
-        "nom": "jaunes d'œufs",
+        "nom": "jaune d'œuf",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": 200,
         "u": "g",
         "nom": "fromage blanc",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": 100,
         "u": "g",
         "nom": "sucre",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 2,
         "u": "sachet",
         "nom": "sucre vanillé",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 80,
         "u": "g",
         "nom": "farine",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 50,
         "u": "g",
         "nom": "poudre d'amande",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 20,
         "u": "cl",
         "nom": "lait",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": 15,
         "u": "g",
         "nom": "beurre",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": 400,
         "u": "g",
         "nom": "framboises",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
         "q": 2,
         "u": "c. à soupe",
         "nom": "pistache",
+        "detail": "",
         "rayon": "Épicerie"
       }
     ],
@@ -1195,24 +1387,28 @@
         "q": 100,
         "u": "g",
         "nom": "beurre",
+        "detail": "",
         "rayon": "Crèmerie – Œufs"
       },
       {
         "q": 150,
         "u": "g",
         "nom": "farine",
+        "detail": "",
         "rayon": "Épicerie"
       },
       {
         "q": 225,
         "u": "g",
-        "nom": "cassonade (dont 50 g mélangés aux fruits)",
+        "nom": "cassonade",
+        "detail": "(dont 50 g mélangés aux fruits)",
         "rayon": "Épicerie"
       },
       {
         "q": null,
         "u": "",
-        "nom": "fruits (au choix)",
+        "nom": "fruits",
+        "detail": "(au choix)",
         "rayon": "Fruits et légumes"
       }
     ],
