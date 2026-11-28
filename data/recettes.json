@@ -425,10 +425,17 @@
         "rayon": "Fruits et légumes"
       },
       {
-        "q": 2,
+        "q": 1,
         "u": "",
-        "nom": "poivron",
-        "detail": "(vert et rouge)",
+        "nom": "poivron rouge",
+        "detail": "",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 1,
+        "u": "",
+        "nom": "poivron vert",
+        "detail": "",
         "rayon": "Fruits et légumes"
       },
       {
