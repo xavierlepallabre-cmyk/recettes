@@ -497,8 +497,6 @@ function calculerCourses() {
       nom = seulCompte ? (morceaux[0].q > 1 ? pluriel(a.nom) : singulier(a.nom)) : avecDe(a.nom);
       if (a.sansQte) nom += ' (+ un peu)';
     } else nom = a.nom;
-    // une précision entre parenthèses utile pour l'achat, quand l'article ne vient que d'une recette
-    if (a.details.length === 1 && /^\(/.test(a.details[0])) nom += ' ' + a.details[0];
     return { cle: a.cle, rayon: a.rayon, texteQ, nom: nom.trim(), tri: normaliser(a.nom), sources: [...a.sources] };
   });
 }
