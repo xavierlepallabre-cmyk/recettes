@@ -1,76 +1,776 @@
 [
   {
-    "id": "quiche-lorraine-ex01",
+    "id": "saucisse-morteau-pdt",
+    "titre": "Saucisse de Morteau aux pommes de terre",
+    "categorie": "Plat",
+    "portions": 4,
+    "tempsPrep": null,
+    "tempsCuisson": 35,
+    "photo": "",
+    "ingredients": [
+      {
+        "q": 1,
+        "u": "",
+        "nom": "saucisse de Morteau (ou 2 selon appétit)",
+        "rayon": "Boucherie – Poissonnerie"
+      },
+      {
+        "q": 4,
+        "u": "",
+        "nom": "grosses pommes de terre",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 2,
+        "u": "",
+        "nom": "oignons",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "sel, poivre",
+        "rayon": "Épicerie"
+      }
+    ],
+    "etapes": [
+      "Peler et couper les pommes de terre (fines rondelles) et les oignons en tranches fines.",
+      "Couper également le saucisson en tranches.",
+      "Dans une cocotte anti-adhésive, mettre alternativement des couches de saucisson, d'oignons et de pommes de terre (en dernier sur le dessus = saucisson).",
+      "Cuire à feu doux, couvert, pendant 35 min environ."
+    ],
+    "notes": ""
+  },
+  {
+    "id": "riz-gaxuxa",
+    "titre": "Riz Gaxuxa",
+    "categorie": "Plat",
+    "portions": 4,
+    "tempsPrep": null,
+    "tempsCuisson": 20,
+    "photo": "",
+    "ingredients": [
+      {
+        "q": 250,
+        "u": "g",
+        "nom": "riz long",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 250,
+        "u": "g",
+        "nom": "chorizo",
+        "rayon": "Boucherie – Poissonnerie"
+      },
+      {
+        "q": 2,
+        "u": "",
+        "nom": "poivrons rouges (ou 1 vert + 1 rouge)",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "quelques olives vertes",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "huile d'olive",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 75,
+        "u": "g",
+        "nom": "ventrêche",
+        "rayon": "Boucherie – Poissonnerie"
+      },
+      {
+        "q": 2,
+        "u": "",
+        "nom": "poivrons verts (ou 1 vert + 1 rouge)",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 3,
+        "u": "",
+        "nom": "oignons",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 1,
+        "u": "",
+        "nom": "petite brique de coulis de tomate",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "sel, poivre",
+        "rayon": "Épicerie"
+      }
+    ],
+    "etapes": [
+      "Faire tremper les olives dans l'eau bouillante pendant 2 min et les égoutter.",
+      "Épépiner les poivrons et les couper en lamelles, émincer les oignons.",
+      "Faire revenir les oignons dans une poêle avec 2 cuillerées d'huile jusqu'à ce qu'ils commencent à blondir.",
+      "Lorsque les oignons sont fondus, ajouter le riz dans la poêle et remuer le mélange jusqu'à ce que le riz devienne transparent et qu'il ait absorbé toute l'huile.",
+      "Verser le coulis de tomate, ajouter les poivrons, saler et poivrer, couvrir d'1 cm d'eau.",
+      "Égoutter les olives, couper la ventrêche en dés et le chorizo en tranches.",
+      "Disposer le chorizo, la ventrêche et les olives sur le riz, porter à ébullition et couvrir. Laisser mijoter à feu doux 20 min."
+    ],
+    "notes": ""
+  },
+  {
+    "id": "boeuf-mexicaine",
+    "titre": "Bœuf à la mexicaine",
+    "categorie": "Plat",
+    "portions": 4,
+    "tempsPrep": null,
+    "tempsCuisson": 60,
+    "photo": "",
+    "ingredients": [
+      {
+        "q": 600,
+        "u": "g",
+        "nom": "bœuf (paleron ou macreuse) coupé en cubes de 3 cm",
+        "rayon": "Boucherie – Poissonnerie"
+      },
+      {
+        "q": 20,
+        "u": "cl",
+        "nom": "coulis de tomates",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 1,
+        "u": "",
+        "nom": "petite boîte de maïs",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 150,
+        "u": "g",
+        "nom": "riz long",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 1,
+        "u": "",
+        "nom": "poivron rouge",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 1,
+        "u": "",
+        "nom": "poivron vert",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 2,
+        "u": "",
+        "nom": "carottes",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 2,
+        "u": "",
+        "nom": "oignons émincés",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 2,
+        "u": "gousse",
+        "nom": "ail",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 2,
+        "u": "",
+        "nom": "tablettes de bouillon de bœuf",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 1,
+        "u": "c. à soupe",
+        "nom": "paprika",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "tabasco",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 3,
+        "u": "c. à soupe",
+        "nom": "huile",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "sel, poivre",
+        "rayon": "Épicerie"
+      }
+    ],
+    "etapes": [
+      "Faites chauffer l'huile dans une cocotte à fond épais et mettez-y la viande à rissoler sur toutes les faces.",
+      "Retirez la viande et mettez les oignons émincés à revenir. Dès que les oignons ont légèrement blondi, remettez la viande dans la cocotte avec l'ail écrasé.",
+      "Saupoudrez de paprika. Versez le coulis de tomates puis mouillez d'eau chaude de façon à recouvrir largement la viande.",
+      "Ajoutez les tablettes de bouillon ainsi que les carottes coupées en petits dés. Laissez mijoter à couvert 30 min.",
+      "Nettoyez les poivrons, ôtez le pédoncule, les graines et les filaments. Détaillez-les en morceaux réguliers.",
+      "Le premier temps de cuisson passé, ajoutez le riz et les poivrons. Salez, poivrez et relevez de quelques gouttes de tabasco.",
+      "Prolongez la cuisson à feu doux et à demi-couvert 25 min.",
+      "Ajoutez le maïs et prolongez la cuisson de 5 min."
+    ],
+    "notes": ""
+  },
+  {
+    "id": "boeuf-en-sauce",
+    "titre": "Bœuf en sauce",
+    "categorie": "Plat",
+    "portions": 6,
+    "tempsPrep": null,
+    "tempsCuisson": 45,
+    "photo": "",
+    "ingredients": [
+      {
+        "q": 1,
+        "u": "kg",
+        "nom": "bœuf à bourguignon (1 à 1,2 kg)",
+        "rayon": "Boucherie – Poissonnerie"
+      },
+      {
+        "q": 2,
+        "u": "",
+        "nom": "carottes",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 2,
+        "u": "",
+        "nom": "oignons",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 250,
+        "u": "g",
+        "nom": "champignons",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 1,
+        "u": "c. à soupe",
+        "nom": "farine",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 25,
+        "u": "cl",
+        "nom": "vin blanc",
+        "rayon": "Boissons"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "sel, poivre",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "herbes de Provence",
+        "rayon": "Épicerie"
+      }
+    ],
+    "etapes": [
+      "Faire revenir le bœuf, saupoudrer de farine ensuite, laisser cuire quelques minutes, puis ajouter le vin.",
+      "Faire revenir séparément les oignons et les champignons.",
+      "Tout mettre dans la cocotte avec les carottes, le sel, le poivre et les herbes de Provence.",
+      "Ajouter la quantité d'eau nécessaire à la cuisson (25 à 50 cl).",
+      "Cuire 45 min après la rotation de la soupape."
+    ],
+    "notes": "Cuisson à la cocotte-minute."
+  },
+  {
+    "id": "couscous",
+    "titre": "Couscous",
+    "categorie": "Plat",
+    "portions": 6,
+    "tempsPrep": null,
+    "tempsCuisson": 60,
+    "photo": "",
+    "ingredients": [
+      {
+        "q": 500,
+        "u": "g",
+        "nom": "semoule (1 verre de semoule pour 1 verre d'eau bouillante salée)",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "morceaux de mouton",
+        "rayon": "Boucherie – Poissonnerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "morceaux de poulet",
+        "rayon": "Boucherie – Poissonnerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "merguez",
+        "rayon": "Boucherie – Poissonnerie"
+      },
+      {
+        "q": 500,
+        "u": "g",
+        "nom": "tomates",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "concentré ou coulis de tomate",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 500,
+        "u": "g",
+        "nom": "courgettes",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 500,
+        "u": "g",
+        "nom": "carottes et navets",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 2,
+        "u": "",
+        "nom": "poivrons (vert et rouge)",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 2,
+        "u": "",
+        "nom": "oignons",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 1,
+        "u": "gousse",
+        "nom": "ail",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 2,
+        "u": "",
+        "nom": "clous de girofle",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 1,
+        "u": "",
+        "nom": "petite boîte de pois chiches",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 1,
+        "u": "c. à soupe",
+        "nom": "épices à couscous",
+        "rayon": "Épicerie"
+      }
+    ],
+    "etapes": [
+      "Préparer la semoule avec de l'eau bouillante salée (1 verre de semoule pour 1 verre d'eau).",
+      "Mettre les légumes dans de l'eau bouillante salée.",
+      "Faire revenir la viande.",
+      "À mi-cuisson, ajouter la viande aux légumes. Cuisson totale : environ 1 h."
+    ],
+    "notes": ""
+  },
+  {
+    "id": "quiche-lorraine",
     "titre": "Quiche lorraine",
     "categorie": "Plat",
     "portions": 6,
-    "tempsPrep": 15,
-    "tempsCuisson": 35,
+    "tempsPrep": null,
+    "tempsCuisson": 40,
     "photo": "",
     "ingredients": [
-      { "q": 1, "u": "", "nom": "pâte brisée", "rayon": "Crèmerie – Œufs" },
-      { "q": 200, "u": "g", "nom": "lardons", "rayon": "Boucherie – Poissonnerie" },
-      { "q": 3, "u": "", "nom": "œufs", "rayon": "Crèmerie – Œufs" },
-      { "q": 20, "u": "cl", "nom": "crème fraîche", "rayon": "Crèmerie – Œufs" },
-      { "q": 20, "u": "cl", "nom": "lait", "rayon": "Crèmerie – Œufs" },
-      { "q": 1, "u": "pincée", "nom": "muscade", "rayon": "Épicerie" },
-      { "q": null, "u": "", "nom": "sel, poivre", "rayon": "Épicerie" }
+      {
+        "q": 1,
+        "u": "",
+        "nom": "pâte brisée",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": 4,
+        "u": "",
+        "nom": "œufs",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": 2,
+        "u": "verre",
+        "nom": "lait (petit verre bleu)",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": 1,
+        "u": "verre",
+        "nom": "crème liquide (petit verre)",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "lardons",
+        "rayon": "Boucherie – Poissonnerie"
+      },
+      {
+        "q": 1,
+        "u": "sachet",
+        "nom": "fromage râpé",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": 1,
+        "u": "",
+        "nom": "échalote",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "sel, poivre",
+        "rayon": "Épicerie"
+      }
     ],
     "etapes": [
-      "Préchauffer le four à 180 °C.",
-      "Étaler la pâte dans un moule et la piquer avec une fourchette.",
-      "Faire revenir les lardons à la poêle sans matière grasse, puis les répartir sur la pâte.",
-      "Battre les œufs avec la crème, le lait, la muscade, du sel et du poivre.",
-      "Verser sur les lardons et enfourner 35 minutes, jusqu'à ce que la quiche soit dorée."
+      "Battre les œufs. Ajouter le lait et la crème.",
+      "Faire revenir l'échalote puis les lardons.",
+      "Ajouter au mélange puis ajouter le fromage râpé.",
+      "Saler, poivrer en fonction du salage des lardons.",
+      "Mettre au four la pâte brisée 15 min à 180 °C.",
+      "Ajouter le mélange. Mettre au four environ 25 min à 180 °C. Surveiller la cuisson : piquer d'un couteau."
     ],
-    "notes": "Exemple fourni avec l'application : vous pouvez le supprimer."
+    "notes": ""
   },
   {
-    "id": "soupe-potiron-ex02",
-    "titre": "Soupe de potiron",
-    "categorie": "Soupe",
+    "id": "goulasch-hongroise",
+    "titre": "Goulasch à la hongroise",
+    "categorie": "Plat",
     "portions": 4,
-    "tempsPrep": 15,
-    "tempsCuisson": 25,
+    "tempsPrep": null,
+    "tempsCuisson": 60,
     "photo": "",
     "ingredients": [
-      { "q": 1, "u": "kg", "nom": "potiron", "rayon": "Fruits et légumes" },
-      { "q": 2, "u": "", "nom": "pommes de terre", "rayon": "Fruits et légumes" },
-      { "q": 1, "u": "", "nom": "oignon", "rayon": "Fruits et légumes" },
-      { "q": 1, "u": "", "nom": "cube de bouillon de volaille", "rayon": "Épicerie" },
-      { "q": 10, "u": "cl", "nom": "crème fraîche", "rayon": "Crèmerie – Œufs" },
-      { "q": null, "u": "", "nom": "sel, poivre", "rayon": "Épicerie" }
+      {
+        "q": 800,
+        "u": "g",
+        "nom": "paleron (800 g à 1 kg)",
+        "rayon": "Boucherie – Poissonnerie"
+      },
+      {
+        "q": 6,
+        "u": "",
+        "nom": "oignons (700 g)",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 1,
+        "u": "",
+        "nom": "pomme de terre",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "huile d'olive",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 3,
+        "u": "c. à soupe",
+        "nom": "paprika doux",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "un peu de piment de Cayenne",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 0.5,
+        "u": "c. à café",
+        "nom": "cumin",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 2,
+        "u": "c. à soupe",
+        "nom": "concentré de tomates",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 1,
+        "u": "l",
+        "nom": "bouillon de bœuf (2 cubes)",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "poivre (pas de sel)",
+        "rayon": "Épicerie"
+      }
     ],
     "etapes": [
-      "Éplucher et couper en morceaux le potiron, les pommes de terre et l'oignon.",
-      "Les mettre dans une grande casserole, couvrir d'eau et ajouter le cube de bouillon.",
-      "Laisser cuire 25 minutes à feu moyen.",
-      "Mixer, ajouter la crème, saler et poivrer."
+      "Couper les oignons et les faire revenir dans l'huile.",
+      "Couper la viande en cubes. L'ajouter aux oignons et faire revenir. Ajouter les épices.",
+      "Ajouter la pomme de terre et le concentré de tomates.",
+      "Faire mijoter quelques minutes.",
+      "Faire cuire en cocotte 1 h."
     ],
-    "notes": "Exemple fourni avec l'application : vous pouvez le supprimer."
+    "notes": ""
   },
   {
-    "id": "gateau-yaourt-ex03",
-    "titre": "Gâteau au yaourt",
-    "categorie": "Dessert",
-    "portions": 8,
-    "tempsPrep": 10,
-    "tempsCuisson": 35,
+    "id": "petit-sale-lentilles",
+    "titre": "Petit salé saucisses lentilles",
+    "categorie": "Plat",
+    "portions": 6,
+    "tempsPrep": null,
+    "tempsCuisson": 30,
     "photo": "",
     "ingredients": [
-      { "q": 1, "u": "pot", "nom": "yaourt nature", "rayon": "Crèmerie – Œufs" },
-      { "q": 3, "u": "", "nom": "œufs", "rayon": "Crèmerie – Œufs" },
-      { "q": 2, "u": "pot", "nom": "sucre", "rayon": "Épicerie" },
-      { "q": 3, "u": "pot", "nom": "farine", "rayon": "Épicerie" },
-      { "q": 0.5, "u": "pot", "nom": "huile", "rayon": "Épicerie" },
-      { "q": 1, "u": "sachet", "nom": "levure chimique", "rayon": "Épicerie" }
+      {
+        "q": 2,
+        "u": "",
+        "nom": "carottes",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 2,
+        "u": "",
+        "nom": "oignons",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "petit salé",
+        "rayon": "Boucherie – Poissonnerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "saucisse de Morteau ou Montbéliard, ou autres saucisses",
+        "rayon": "Boucherie – Poissonnerie"
+      },
+      {
+        "q": 1,
+        "u": "",
+        "nom": "paquet de lentilles blondes",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "herbes de Provence",
+        "rayon": "Épicerie"
+      }
     ],
     "etapes": [
-      "Préchauffer le four à 180 °C et beurrer un moule.",
-      "Verser le yaourt dans un saladier ; garder le pot pour mesurer les autres ingrédients.",
-      "Ajouter les œufs, le sucre, la farine, la levure puis l'huile, en mélangeant entre chaque.",
-      "Verser dans le moule et cuire 35 minutes."
+      "Faire revenir l'oignon dans du beurre et de l'huile d'olive.",
+      "Couper les carottes en petits morceaux et les ajouter.",
+      "Ajouter ensuite les lentilles et 4 fois leur volume en eau.",
+      "Saler, poivrer. Ajouter un peu d'herbes de Provence.",
+      "Ajouter la viande coupée en morceaux (préalablement cuite dans de l'eau chaude pour le petit salé).",
+      "Laisser cuire à feu moyen à doux durant 20 à 30 minutes en remuant et en surveillant."
     ],
-    "notes": "Exemple fourni avec l'application : vous pouvez le supprimer."
+    "notes": ""
+  },
+  {
+    "id": "porc-colombo",
+    "titre": "Sauté de porc au colombo",
+    "categorie": "Plat",
+    "portions": 6,
+    "tempsPrep": null,
+    "tempsCuisson": 60,
+    "photo": "",
+    "ingredients": [
+      {
+        "q": 1,
+        "u": "kg",
+        "nom": "porc (sauté ou rôti coupé en morceaux) — 1 à 1,5 kg",
+        "rayon": "Boucherie – Poissonnerie"
+      },
+      {
+        "q": 6,
+        "u": "c. à café",
+        "nom": "colombo",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 1,
+        "u": "",
+        "nom": "poivron rouge",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 1,
+        "u": "",
+        "nom": "poivron jaune",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 1,
+        "u": "",
+        "nom": "cube de bouillon de volaille",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 2,
+        "u": "",
+        "nom": "oignons",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "farine",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "sel et poivre",
+        "rayon": "Épicerie"
+      }
+    ],
+    "etapes": [
+      "Faire revenir l'oignon dans du beurre + huile d'olive.",
+      "Faire revenir la viande.",
+      "Ajouter les poivrons coupés en petits morceaux.",
+      "Mettre un peu de farine et remuer.",
+      "Mouiller avec 1 litre d'eau. Ajouter 1 cube de bouillon de volaille.",
+      "Saler et poivrer.",
+      "Cuire 1 h à la cocotte-minute. Réchauffer."
+    ],
+    "notes": ""
+  },
+  {
+    "id": "coquilles-poisson",
+    "titre": "Coquilles de poisson",
+    "categorie": "Plat",
+    "portions": 8,
+    "tempsPrep": null,
+    "tempsCuisson": 15,
+    "photo": "",
+    "ingredients": [
+      {
+        "q": 800,
+        "u": "g",
+        "nom": "poisson",
+        "rayon": "Boucherie – Poissonnerie"
+      },
+      {
+        "q": 300,
+        "u": "g",
+        "nom": "pétoncles",
+        "rayon": "Boucherie – Poissonnerie"
+      },
+      {
+        "q": 2,
+        "u": "",
+        "nom": "petites boîtes de champignons (ou champignons frais)",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 0.5,
+        "u": "sachet",
+        "nom": "crevettes",
+        "rayon": "Boucherie – Poissonnerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "mélange de fruits de mer",
+        "rayon": "Boucherie – Poissonnerie"
+      },
+      {
+        "q": 5,
+        "u": "",
+        "nom": "échalotes",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 1,
+        "u": "",
+        "nom": "jaune d'œuf",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "crème fraîche (2 c. à café + 2 à 3 c. à soupe)",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "court-bouillon",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "fumet de poisson",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "farine",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 2,
+        "u": "c. à soupe",
+        "nom": "beurre",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "chapelure",
+        "rayon": "Boulangerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "sel, poivre",
+        "rayon": "Épicerie"
+      }
+    ],
+    "etapes": [
+      "Faire revenir les échalotes.",
+      "Ajouter le court-bouillon et le fumet de poisson, puis y cuire le poisson avec 2 c. à café de crème. Ne pas saler.",
+      "Mettre les pétoncles à pocher dans le bouillon.",
+      "Faire un roux : farine + bouillon (3 c. à soupe) + beurre (2 c. à soupe), puis ajouter 1 jaune d'œuf et 2 à 3 c. à soupe de crème.",
+      "Ajouter le poisson, les fruits de mer, les champignons et la chapelure. Saler, poivrer.",
+      "Four 15 min à 180 °C."
+    ],
+    "notes": ""
   }
 ]
