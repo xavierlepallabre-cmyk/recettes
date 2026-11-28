@@ -8,7 +8,7 @@ Elle fonctionne sur ordinateur et sur téléphone, sans rien installer.
 | Onglet | À quoi il sert |
 |---|---|
 | 📖 **Recettes** | Toutes les recettes avec photo. Recherche par nom ou ingrédient, tri par catégorie. Sur une recette : changer le nombre de personnes (les quantités suivent), **Imprimer**, **Mettre au menu**. |
-| 📅 **Menu de la semaine** | Lundi → dimanche, midi et soir. On touche une case et on choisit un plat. |
+| 📅 **Menu de la semaine** | Du samedi midi au vendredi soir (on fait les courses le samedi matin). On touche une case et on choisit un plat. |
 | 🛒 **Liste de courses** | Calculée toute seule à partir du menu : quantités additionnées, arrondies au-dessus, classées par rayon. On coche dans le magasin, on peut ajouter des articles, l'imprimer ou l'envoyer sur un téléphone. |
 
 Ajouter, modifier et supprimer des recettes se fait **uniquement depuis l'ordinateur réglé avec le jeton GitHub** : sur les autres appareils, ces boutons n'apparaissent pas.

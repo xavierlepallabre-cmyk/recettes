@@ -5,7 +5,9 @@
    ========================================================= */
 'use strict';
 
-const JOURS = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+// La semaine commence le samedi midi (jour des courses) et finit le vendredi soir
+const JOURS = ['Samedi', 'Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'];
+const DEBUT_SEMAINE = 'samedi';
 const REPAS = ['Midi', 'Soir'];
 const CATEGORIES = ['Entrée', 'Plat', 'Dessert', 'Soupe', 'Apéritif', 'Accompagnement', 'Petit-déjeuner', 'Boisson', 'Autre'];
 const EMOJI = { 'Entrée': '🥗', 'Plat': '🍲', 'Dessert': '🍰', 'Soupe': '🥣', 'Apéritif': '🧀', 'Accompagnement': '🥔', 'Petit-déjeuner': '🥐', 'Boisson': '🍹', 'Autre': '🍽️' };
@@ -200,9 +202,20 @@ async function charger() {
   etat.recettes = Array.isArray(recettes) ? recettes : [];
   const local = lireLocal('recettes-planning', null);
   const distant = planning && planning.repas ? planning : { majLe: 0, repas: {} };
-  etat.planning = local && local.majLe > (distant.majLe || 0) ? local : distant;
+  etat.planning = migrerPlanning(local && local.majLe > (distant.majLe || 0) ? local : distant);
   etat.coches = lireLocal('recettes-coches', {});
   etat.ajouts = lireLocal('recettes-ajouts', []);
+}
+
+/* Ancien format (semaine commençant le lundi) → nouveau (samedi) : chaque plat garde son jour */
+function migrerPlanning(p) {
+  if (p.debut === DEBUT_SEMAINE) return p;
+  const repas = {};
+  for (const [cle, v] of Object.entries(p.repas || {})) {
+    const [i, rp] = cle.split('-');
+    repas[`${(Number(i) + 2) % 7}-${rp}`] = v;   // lundi (0) → position 2, samedi (5) → 0…
+  }
+  return { ...p, repas, debut: DEBUT_SEMAINE };
 }
 
 function recette(id) { return etat.recettes.find(r => r.id === id); }
