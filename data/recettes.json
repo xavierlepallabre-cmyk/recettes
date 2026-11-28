@@ -1053,5 +1053,174 @@
       "Mettre au four 30 minutes à 180 °C."
     ],
     "notes": "Pour 8 crèmes."
+  },
+  {
+    "id": "panna-cotta",
+    "titre": "Panna cotta",
+    "categorie": "Dessert",
+    "portions": 6,
+    "tempsPrep": null,
+    "tempsCuisson": null,
+    "photo": "",
+    "ingredients": [
+      {
+        "q": 20,
+        "u": "cl",
+        "nom": "lait (ou 20 cl de lait de coco)",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": 25,
+        "u": "cl",
+        "nom": "crème liquide",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": 60,
+        "u": "g",
+        "nom": "sucre",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 1,
+        "u": "gousse",
+        "nom": "vanille (et quelques gouttes d'extrait)",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 3,
+        "u": "",
+        "nom": "feuilles de gélatine",
+        "rayon": "Épicerie"
+      }
+    ],
+    "etapes": [
+      "Réhydrater la gélatine dans un bol d'eau froide.",
+      "Dans une casserole, mélanger la crème, le lait, le sucre et la gousse de vanille fendue et grattée. Ajouter quelques gouttes d'extrait.",
+      "Porter à ébullition, retirer du feu et laisser infuser pendant 10 min.",
+      "Filtrer la crème, incorporer la gélatine essorée.",
+      "Verser dans les verrines. Laisser refroidir 4 h. Couvrir d'un film."
+    ],
+    "notes": "Accompagnement : coulis de fruits rouges, caramel."
+  },
+  {
+    "id": "clafoutis-framboises",
+    "titre": "Clafoutis aux framboises",
+    "categorie": "Dessert",
+    "portions": 6,
+    "tempsPrep": null,
+    "tempsCuisson": null,
+    "photo": "",
+    "ingredients": [
+      {
+        "q": 2,
+        "u": "",
+        "nom": "œufs",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": 2,
+        "u": "",
+        "nom": "jaunes d'œufs",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": 200,
+        "u": "g",
+        "nom": "fromage blanc",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": 100,
+        "u": "g",
+        "nom": "sucre",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 2,
+        "u": "sachet",
+        "nom": "sucre vanillé",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 80,
+        "u": "g",
+        "nom": "farine",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 50,
+        "u": "g",
+        "nom": "poudre d'amande",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 20,
+        "u": "cl",
+        "nom": "lait",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": 15,
+        "u": "g",
+        "nom": "beurre",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": 400,
+        "u": "g",
+        "nom": "framboises",
+        "rayon": "Fruits et légumes"
+      },
+      {
+        "q": 2,
+        "u": "c. à soupe",
+        "nom": "pistache",
+        "rayon": "Épicerie"
+      }
+    ],
+    "etapes": [],
+    "notes": ""
+  },
+  {
+    "id": "crumble",
+    "titre": "Crumble",
+    "categorie": "Dessert",
+    "portions": 6,
+    "tempsPrep": null,
+    "tempsCuisson": 30,
+    "photo": "",
+    "ingredients": [
+      {
+        "q": 100,
+        "u": "g",
+        "nom": "beurre",
+        "rayon": "Crèmerie – Œufs"
+      },
+      {
+        "q": 150,
+        "u": "g",
+        "nom": "farine",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": 225,
+        "u": "g",
+        "nom": "cassonade (dont 50 g mélangés aux fruits)",
+        "rayon": "Épicerie"
+      },
+      {
+        "q": null,
+        "u": "",
+        "nom": "fruits (au choix)",
+        "rayon": "Fruits et légumes"
+      }
+    ],
+    "etapes": [
+      "Mélanger la farine, le sucre et les morceaux de beurre. Mélanger du bout des doigts.",
+      "Mettre en couches, en fonction des fruits.",
+      "Cuire 30 min à 180 °C."
+    ],
+    "notes": ""
   }
 ]
