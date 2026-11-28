@@ -34,7 +34,7 @@ const MOTS_RAYONS = {
 
 const etat = {
   recettes: [],
-  planning: { majLe: 0, repas: {} },   // repas["0-Midi"] = { id, portions }
+  planning: { majLe: 0, repas: {} },   // repas["0-Midi"] = [{ id, portions }, …] (plusieurs plats par repas)
   coches: {},                           // liste de courses : articles cochés (par appareil)
   ajouts: [],                           // articles ajoutés à la main (par appareil)
   filtre: { texte: '', categorie: '' },
@@ -207,16 +207,42 @@ async function charger() {
   etat.ajouts = lireLocal('recettes-ajouts', []);
 }
 
-/* Ancien format (semaine commençant le lundi) → nouveau (samedi) : chaque plat garde son jour */
+/* Mise à jour des anciens menus :
+   - semaine commençant le lundi → samedi (chaque plat garde son jour)
+   - un seul plat par repas → liste de plats */
 function migrerPlanning(p) {
-  if (p.debut === DEBUT_SEMAINE) return p;
-  const repas = {};
-  for (const [cle, v] of Object.entries(p.repas || {})) {
-    const [i, rp] = cle.split('-');
-    repas[`${(Number(i) + 2) % 7}-${rp}`] = v;   // lundi (0) → position 2, samedi (5) → 0…
+  let repas = p.repas || {};
+  if (p.debut !== DEBUT_SEMAINE) {
+    const decale = {};
+    for (const [cle, v] of Object.entries(repas)) {
+      const [i, rp] = cle.split('-');
+      decale[`${(Number(i) + 2) % 7}-${rp}`] = v;   // lundi (0) → position 2, samedi (5) → 0…
+    }
+    repas = decale;
   }
-  return { ...p, repas, debut: DEBUT_SEMAINE };
+  const listes = {};
+  for (const [cle, v] of Object.entries(repas)) {
+    const plats = (Array.isArray(v) ? v : [v]).filter(x => x && x.id);
+    if (plats.length) listes[cle] = plats;
+  }
+  return { ...p, repas: listes, debut: DEBUT_SEMAINE };
 }
+
+/* Plats d'un repas, rangés dans l'ordre du service (entrée, plat, dessert…) */
+const ORDRE_SERVICE = ['Apéritif', 'Entrée', 'Soupe', 'Plat', 'Accompagnement', 'Dessert', 'Boisson', 'Petit-déjeuner', 'Autre'];
+function platsDe(cle) { return etat.planning.repas[cle] || []; }
+function rangerPlats(plats) {
+  const rang = p => { const i = ORDRE_SERVICE.indexOf(recette(p.id)?.categorie); return i < 0 ? 99 : i; };
+  return plats.map((p, n) => [p, n]).sort((a, b) => rang(a[0]) - rang(b[0]) || a[1] - b[1]).map(x => x[0]);
+}
+function ajouterPlat(cle, r, portions) {
+  const plats = platsDe(cle);
+  if (plats.some(p => p.id === r.id)) return false;
+  const pour = portions || plats[0]?.portions || r.portions || 4;   // même nombre de convives que les autres plats
+  etat.planning.repas[cle] = rangerPlats([...plats, { id: r.id, portions: pour }]);
+  return true;
+}
+function nomRepas(cle) { const [ij, rp] = cle.split('-'); return `${JOURS[ij]} ${rp.toLowerCase()}`; }
 
 function recette(id) { return etat.recettes.find(r => r.id === id); }
 
@@ -356,16 +382,22 @@ function vueSemaine() {
   JOURS.forEach((j, ij) => {
     grille += `<div class="jour">${j}</div>`;
     REPAS.forEach(rp => {
-      const cle = `${ij}-${rp}`, p = etat.planning.repas[cle], r = p && recette(p.id);
-      grille += `<div><div class="semaine-mobile-repas">${rp === 'Midi' ? '☀️ Midi' : '🌙 Soir'}</div>` + (r
-        ? `<button class="case pleine" data-action="case" data-cle="${cle}">${r.photo ? imgRecette(r, '') : `<div class="mini-vide">${EMOJI[r.categorie] || '🍽️'}</div>`}
-            <span><span class="case-titre">${echap(r.titre)}</span><span class="case-pour">pour ${p.portions} personne${p.portions > 1 ? 's' : ''}</span></span></button>`
-        : `<button class="case vide-case" data-action="case" data-cle="${cle}"><span>＋ Choisir un plat</span></button>`) + `</div>`;
+      const cle = `${ij}-${rp}`, plats = platsDe(cle);
+      const cases = plats.map((p, n) => {
+        const r = recette(p.id);
+        if (!r) return '';
+        return `<button class="case pleine" data-action="plat" data-cle="${cle}" data-n="${n}">${r.photo ? imgRecette(r, '') : `<div class="mini-vide">${EMOJI[r.categorie] || '🍽️'}</div>`}
+            <span><span class="case-titre">${echap(r.titre)}</span><span class="case-pour">pour ${p.portions} personne${p.portions > 1 ? 's' : ''}</span></span></button>`;
+      }).join('');
+      grille += `<div class="creneau"><div class="semaine-mobile-repas">${rp === 'Midi' ? '☀️ Midi' : '🌙 Soir'}</div>${cases}` +
+        (plats.length
+          ? `<button class="case ajout-case" data-action="ajouter-plat" data-cle="${cle}"><span>＋ Ajouter un plat</span></button>`
+          : `<button class="case vide-case" data-action="ajouter-plat" data-cle="${cle}"><span>＋ Choisir un plat</span></button>`) + `</div>`;
     });
   });
   return `
     <h1>Menu de la semaine</h1>
-    <p class="no-print aide">Touchez une case pour choisir un plat. La liste de courses se fait toute seule.</p>
+    <p class="no-print aide">Touchez une case pour choisir un plat. On peut mettre plusieurs plats sur un même repas (par exemple un plat et un dessert). La liste de courses se fait toute seule.</p>
     <div class="semaine">${grille}</div>
     <div class="rangee-btn">
       <a class="btn principal grand" href="#/courses">🛒 Voir la liste de courses</a>
@@ -377,7 +409,7 @@ function vueSemaine() {
 /* Calcule la liste de courses à partir du menu */
 function calculerCourses() {
   const articles = {};
-  for (const p of Object.values(etat.planning.repas)) {
+  for (const p of Object.values(etat.planning.repas).flat()) {
     const r = recette(p.id); if (!r) continue;
     const ratio = r.portions ? p.portions / r.portions : 1;
     for (const i of r.ingredients || []) {
@@ -634,33 +666,35 @@ function redessinerEnGardantPosition() { const y = window.scrollY; afficher(); w
 window.addEventListener('hashchange', () => { fermerModale(); afficher(); window.scrollTo(0, 0); });
 
 /* ----- Choisir un plat pour une case du menu ----- */
-function ouvrirChoixPlat(cle, texte = '') {
-  const [ij, rp] = cle.split('-');
+function ouvrirChoixPlat(cle, texte = '', n = '') {
   const liste = etat.recettes
     .filter(r => !texte || normaliser(r.titre).includes(normaliser(texte)))
     .sort((a, b) => a.titre.localeCompare(b.titre, 'fr'));
-  const grille = liste.map(r => `<button class="choix" data-action="choisir-plat" data-cle="${cle}" data-id="${echap(r.id)}">${imgRecette(r, 'carte-photo')}<span>${echap(r.titre)}</span></button>`).join('');
+  const grille = liste.map(r => `<button class="choix" data-action="choisir-plat" data-cle="${cle}" data-n="${n}" data-id="${echap(r.id)}">${imgRecette(r, 'carte-photo')}<span>${echap(r.titre)}</span></button>`).join('');
   if (!$('#modale').hidden && $('#choix-resultats')) { $('#choix-resultats').innerHTML = grille || '<p>Aucune recette trouvée.</p>'; return; }
-  ouvrirModale(`<h2>${JOURS[ij]} ${rp.toLowerCase()} : quel plat ?</h2>
-    <input type="search" class="recherche" id="choix-recherche" data-cle="${cle}" placeholder="Chercher…" aria-label="Chercher une recette">
+  const deja = platsDe(cle).map(p => recette(p.id)?.titre).filter(Boolean);
+  ouvrirModale(`<h2>${nomRepas(cle)} : ${n !== '' ? 'par quoi remplacer ?' : deja.length ? 'ajouter un plat' : 'quel plat ?'}</h2>
+    ${n === '' && deja.length ? `<p class="aide">Déjà prévu : ${echap(deja.join(', '))}</p>` : ''}
+    <input type="search" class="recherche" id="choix-recherche" data-cle="${cle}" data-n="${n}" placeholder="Chercher…" aria-label="Chercher une recette">
     <div class="choix-liste" id="choix-resultats">${grille || '<p>Aucune recette pour le moment.</p>'}</div>`);
 }
-function ouvrirCase(cle) {
-  const p = etat.planning.repas[cle];
+function ouvrirPlat(cle, n) {
+  const p = platsDe(cle)[n];
   if (!p) return ouvrirChoixPlat(cle);
-  const r = recette(p.id); const [ij, rp] = cle.split('-');
-  ouvrirModale(`<h2>${JOURS[ij]} ${rp.toLowerCase()}</h2>
+  const r = recette(p.id);
+  ouvrirModale(`<h2>${nomRepas(cle)}</h2>
     <p style="font-size:1.3rem;font-family:Georgia,serif;font-weight:bold">${echap(r ? r.titre : 'Recette supprimée')}</p>
     <div class="portions" style="margin-bottom:1rem">
-      <button data-action="portions-case" data-cle="${cle}" data-delta="-1" aria-label="Une personne de moins">−</button>
+      <button data-action="portions-case" data-cle="${cle}" data-n="${n}" data-delta="-1" aria-label="Une personne de moins">−</button>
       <span class="nb">${p.portions}</span>
-      <button data-action="portions-case" data-cle="${cle}" data-delta="1" aria-label="Une personne de plus">+</button>
+      <button data-action="portions-case" data-cle="${cle}" data-n="${n}" data-delta="1" aria-label="Une personne de plus">+</button>
       <span class="lib">personne${p.portions > 1 ? 's' : ''}</span>
     </div>
     <div class="rangee-btn" style="flex-direction:column">
       ${r ? `<a class="btn principal grand large" href="#/recette/${encodeURIComponent(r.id)}">📖 Voir la recette</a>` : ''}
-      <button class="btn grand large" data-action="changer-plat" data-cle="${cle}">🔄 Choisir un autre plat</button>
-      <button class="btn grand large danger" data-action="retirer-plat" data-cle="${cle}">Enlever ce plat du menu</button>
+      <button class="btn grand large" data-action="ajouter-plat" data-cle="${cle}">＋ Ajouter un autre plat à ce repas</button>
+      <button class="btn grand large" data-action="changer-plat" data-cle="${cle}" data-n="${n}">🔄 Remplacer par un autre plat</button>
+      <button class="btn grand large danger" data-action="retirer-plat" data-cle="${cle}" data-n="${n}">Enlever ce plat du menu</button>
     </div>`);
 }
 function ouvrirChoixCreneau(id) {
@@ -669,11 +703,13 @@ function ouvrirChoixCreneau(id) {
   JOURS.forEach((j, ij) => {
     g += `<strong>${j}</strong>`;
     REPAS.forEach(rp => {
-      const cle = `${ij}-${rp}`, p = etat.planning.repas[cle], o = p && recette(p.id);
-      g += `<button class="btn ${o ? 'occupe' : ''}" data-action="mettre-creneau" data-cle="${cle}" data-id="${echap(id)}">${o ? echap(o.titre.slice(0, 18)) : 'Libre'}</button>`;
+      const cle = `${ij}-${rp}`, noms = platsDe(cle).map(p => recette(p.id)?.titre).filter(Boolean);
+      const dejaLa = platsDe(cle).some(p => p.id === id);
+      g += `<button class="btn ${noms.length ? 'occupe' : ''}" data-action="mettre-creneau" data-cle="${cle}" data-id="${echap(id)}" ${dejaLa ? 'disabled' : ''} title="${echap(noms.join(' + '))}">${dejaLa ? '✓ Déjà prévu' : noms.length ? '＋ ' + echap(noms.join(' + ')) : 'Libre'}</button>`;
     });
   });
-  ouvrirModale(`<h2>Quand voulez-vous faire « ${echap(r.titre)} » ?</h2><div class="grille-creneaux">${g}</div>`);
+  ouvrirModale(`<h2>Quand voulez-vous faire « ${echap(r.titre)} » ?</h2>
+    <p class="aide">Un repas déjà rempli garde ses plats : celui-ci s'y ajoute.</p><div class="grille-creneaux">${g}</div>`);
 }
 
 /* ----- Gestion de tous les clics ----- */
@@ -695,23 +731,32 @@ document.addEventListener('click', async e => {
     case 'ajouter-semaine': ouvrirChoixCreneau(el.dataset.id); break;
     case 'mettre-creneau': {
       const r = recette(el.dataset.id);
-      etat.planning.repas[el.dataset.cle] = { id: r.id, portions: etat.portionsVues?.[r.id] || r.portions || 4 };
+      ajouterPlat(el.dataset.cle, r, etat.portionsVues?.[r.id]);
       sauverPlanning(); fermerModale();
-      const [ij, rp] = el.dataset.cle.split('-');
-      toast(`📅 Ajouté au menu : ${JOURS[ij]} ${rp.toLowerCase()}`); break;
+      toast(`📅 Ajouté au menu : ${nomRepas(el.dataset.cle)}`); break;
     }
-    case 'case': ouvrirCase(el.dataset.cle); break;
-    case 'changer-plat': fermerModale(); ouvrirChoixPlat(el.dataset.cle); break;
+    case 'plat': ouvrirPlat(el.dataset.cle, Number(el.dataset.n)); break;
+    case 'ajouter-plat': fermerModale(); ouvrirChoixPlat(el.dataset.cle); break;
+    case 'changer-plat': fermerModale(); ouvrirChoixPlat(el.dataset.cle, '', el.dataset.n); break;
     case 'choisir-plat': {
-      const r = recette(el.dataset.id); const ancien = etat.planning.repas[el.dataset.cle];
-      etat.planning.repas[el.dataset.cle] = { id: r.id, portions: ancien?.portions || r.portions || 4 };
+      const r = recette(el.dataset.id), cle = el.dataset.cle;
+      if (el.dataset.n !== '') {   // remplacement
+        const plats = [...platsDe(cle)], n = Number(el.dataset.n), ancien = plats[n];
+        if (plats.some((p, i) => p.id === r.id && i !== n)) { toast('Ce plat est déjà prévu à ce repas.'); break; }
+        plats[n] = { id: r.id, portions: ancien?.portions || r.portions || 4 };
+        etat.planning.repas[cle] = rangerPlats(plats);
+      } else if (!ajouterPlat(cle, r)) { toast('Ce plat est déjà prévu à ce repas.'); break; }
       sauverPlanning(); fermerModale(); redessinerEnGardantPosition(); break;
     }
-    case 'retirer-plat': delete etat.planning.repas[el.dataset.cle]; sauverPlanning(); fermerModale(); redessinerEnGardantPosition(); break;
+    case 'retirer-plat': {
+      const cle = el.dataset.cle, plats = platsDe(cle).filter((_, i) => i !== Number(el.dataset.n));
+      if (plats.length) etat.planning.repas[cle] = plats; else delete etat.planning.repas[cle];
+      sauverPlanning(); fermerModale(); redessinerEnGardantPosition(); break;
+    }
     case 'portions-case': {
-      const p = etat.planning.repas[el.dataset.cle];
+      const n = Number(el.dataset.n), p = platsDe(el.dataset.cle)[n];
       p.portions = Math.max(1, Math.min(50, p.portions + Number(el.dataset.delta)));
-      sauverPlanning(); ouvrirCase(el.dataset.cle); redessinerEnGardantPosition(); break;
+      sauverPlanning(); ouvrirPlat(el.dataset.cle, n); redessinerEnGardantPosition(); break;
     }
     case 'vider-semaine':
       confirmer('Effacer le menu ?', 'Tous les plats de la semaine seront enlevés. Les recettes, elles, ne sont pas supprimées.', 'Oui, effacer le menu', () => {
@@ -727,7 +772,10 @@ document.addEventListener('click', async e => {
         try {
           await modifierRecettesGh(l => l.filter(x => x.id !== r.id), `Suppression : ${r.titre}`);
           if (r.photo) supprimerFichierGh(r.photo, `Photo supprimée : ${r.titre}`).catch(() => { });
-          for (const [k, p] of Object.entries(etat.planning.repas)) if (p.id === r.id) delete etat.planning.repas[k];
+          for (const [k, plats] of Object.entries(etat.planning.repas)) {
+            const reste = plats.filter(p => p.id !== r.id);
+            if (reste.length) etat.planning.repas[k] = reste; else delete etat.planning.repas[k];
+          }
           sauverPlanning(); attente(false); toast('Recette supprimée.'); location.hash = '#/recettes';
         } catch (err) { attente(false); toast('La suppression a échoué : ' + err.message, 6000); }
       }, true); break;
@@ -781,7 +829,7 @@ document.addEventListener('input', e => {
     etat.filtre.texte = e.target.value;
     $('#resultats').innerHTML = vueRecettes(true);
   }
-  if (e.target.id === 'choix-recherche') ouvrirChoixPlat(e.target.dataset.cle, e.target.value);
+  if (e.target.id === 'choix-recherche') ouvrirChoixPlat(e.target.dataset.cle, e.target.value, e.target.dataset.n);
 });
 
 document.addEventListener('submit', async e => {

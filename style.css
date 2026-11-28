@@ -152,6 +152,8 @@ input.recherche:focus { border-color: var(--accent); outline: none; }
 .case .case-titre { font-weight: 700; display: block; }
 .case .case-pour { color: var(--doux); font-size: .85rem; }
 .semaine-mobile-repas { display: none; }
+.creneau { display: flex; flex-direction: column; gap: .35rem; }
+.case.ajout-case { min-height: 44px; justify-content: center; color: var(--doux); font-weight: 600; font-size: .9rem; padding: .3rem; }
 
 /* ----- Liste de courses ----- */
 .rayon { margin-bottom: 1.3rem; }
@@ -201,7 +203,7 @@ textarea { min-height: 8rem; resize: vertical; }
 .choix .carte-photo, .choix .vignette-vide { font-size: 2.2rem; }
 .choix span { display: block; padding: .5rem .6rem; font-size: .95rem; }
 .grille-creneaux { display: grid; grid-template-columns: auto 1fr 1fr; gap: .5rem; align-items: center; }
-.grille-creneaux .btn { min-height: 48px; padding: .4rem; font-size: .9rem; }
+.grille-creneaux .btn { min-height: 48px; padding: .4rem; font-size: .9rem; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 2.2; }
 .grille-creneaux .occupe { background: var(--accent-clair); border-color: var(--ligne); color: var(--doux); font-weight: 500; }
 
 .attente { position: fixed; inset: 0; z-index: 60; background: rgba(251, 247, 241, .85); display: flex; align-items: center; justify-content: center; }
@@ -251,8 +253,12 @@ textarea { min-height: 8rem; resize: vertical; }
   .semaine .entete-col { display: none; }
   .jour { grid-column: 1 / -1; margin-top: .7rem; }
   .case { min-height: 76px; flex-direction: column; align-items: stretch; text-align: center; gap: .3rem; padding: .4rem; }
-  .case.pleine { flex-direction: column; }
-  .case img, .case .mini-vide { width: 100%; height: 64px; font-size: 1.6rem; }
+  .case.pleine { flex-direction: row; align-items: center; text-align: left; min-height: 56px; }
+  .case img, .case .mini-vide { width: 44px; height: 44px; font-size: 1.3rem; }
+  .case.ajout-case { min-height: 44px; flex-direction: row; font-size: .85rem; }
+  .case.pleine img, .case.pleine .mini-vide { display: none; }
+  .case.pleine { padding: .45rem .6rem; }
+  .case .case-pour { white-space: nowrap; }
   .case .case-titre { font-size: .9rem; line-height: 1.2; }
   .case .case-pour { font-size: .75rem; }
   .case.vide-case { font-size: .9rem; }
@@ -294,6 +300,7 @@ textarea { min-height: 8rem; resize: vertical; }
   .case { min-height: 1.6cm; border: 1px solid #999 !important; box-shadow: none; }
   .case img, .case .mini-vide { width: 1.6cm; height: 1.3cm; }
   .case.vide-case span { visibility: hidden; }
+  .case.ajout-case { display: none; }
   .liste-courses { columns: 2; column-gap: 1.2cm; }
   .rayon { break-inside: avoid; }
   .article { padding: .25rem 0; }
